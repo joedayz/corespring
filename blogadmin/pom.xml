@@ -1,0 +1,231 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.joedayz.corespringtest</groupId>
+  <artifactId>blogadmin</artifactId>
+  <packaging>war</packaging>
+  <version>1.0</version>
+  <name>blogadmin Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+    
+	<repositories>
+		<repository>
+			<id>com.springsource.repository.bundles.release</id>
+			<name>SpringSource Enterprise Bundle Repository - SpringSource Releases</name>
+			<url>http://repository.springsource.com/maven/bundles/release</url>
+		</repository>
+		<repository>
+			<id>com.springsource.repository.bundles.external</id>
+			<name>SpringSource Enterprise Bundle Repository - External Releases</name>
+			<url>http://repository.springsource.com/maven/bundles/external</url>
+		</repository>
+		<repository>
+			<id>com.springsource.repository.bundles.milestone</id>
+			<name>SpringSource Enterprise Bundle Repository - SpringSource Milestones</name>
+			<url>http://repository.springsource.com/maven/bundles/milestone</url>
+		</repository>
+		<repository>
+			<id>com.springsource.repository.bundles.snapshot</id>
+			<name>SpringSource Enterprise Bundle Repository - Snapshot Releases</name>
+			<url>http://repository.springsource.com/maven/bundles/snapshot</url>
+		</repository>
+	</repositories>
+	  
+	<dependencies>
+		<!--  Spring Dependencias -->
+		<dependency> 
+			<groupId>org.springframework</groupId> 
+			<artifactId>org.springframework.core</artifactId> 
+			<version>3.0.5.RELEASE</version> 			
+		</dependency>
+
+		<dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>org.springframework.expression</artifactId>
+		  <version>3.0.5.RELEASE</version>
+		</dependency> 
+		
+		<dependency> 
+		  <groupId>org.springframework</groupId>
+		  <artifactId>org.springframework.context</artifactId>
+		  <version>3.0.5.RELEASE</version>
+		</dependency>	
+		
+		<dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>org.springframework.context.support</artifactId>
+		  <version>3.0.5.RELEASE</version>
+		</dependency> 			
+		
+		<dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>org.springframework.transaction</artifactId>
+		  <version>3.0.5.RELEASE</version>
+		</dependency>	
+		
+		<dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>org.springframework.jdbc</artifactId>
+		  <version>3.0.5.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>org.springframework.orm</artifactId>
+		  <version>3.0.5.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>org.springframework.web</artifactId>
+		  <version>3.0.5.RELEASE</version>
+		</dependency>  
+		
+		<dependency> 
+			<groupId>org.springframework</groupId> 
+			<artifactId>org.springframework.web.servlet</artifactId> 
+			<version>3.0.5.RELEASE</version> 
+		</dependency>		
+		
+		<dependency> 
+			<groupId>org.springframework</groupId> 
+			<artifactId>org.springframework.test</artifactId> 
+			<version>3.0.5.RELEASE</version> 
+		</dependency>		
+		
+		<dependency>
+		    <groupId>javax.validation</groupId>
+		    <artifactId>validation-api</artifactId>
+		    <version>1.0.0.GA</version>
+		</dependency>
+		
+		<dependency> 
+			<groupId>org.apache.commons</groupId> 
+			<artifactId>com.springsource.org.apache.commons.logging</artifactId> 
+			<version>1.1.1</version> 
+		</dependency>
+		
+		<dependency> 
+			<groupId>org.apache.commons</groupId> 
+			<artifactId>com.springsource.org.apache.commons.lang</artifactId> 
+			<version>2.4.0</version> 
+		</dependency>	
+		
+		<dependency> 
+			<groupId>com.mysql.jdbc</groupId> 
+			<artifactId>com.springsource.com.mysql.jdbc</artifactId> 
+			<version>5.1.6</version> 
+		</dependency>
+		
+		<dependency> 
+			<groupId>org.apache.commons</groupId> 
+			<artifactId>com.springsource.org.apache.commons.fileupload</artifactId> 
+			<version>1.2.1</version> 
+		</dependency>	
+		
+		<dependency> 
+			<groupId>org.apache.commons</groupId> 
+			<artifactId>com.springsource.org.apache.commons.io</artifactId> 
+			<version>1.4.0</version> 
+		</dependency>	
+
+		<dependency>  
+			<groupId>org.apache.commons</groupId> 
+			<artifactId>com.springsource.org.apache.commons.dbcp</artifactId> 
+			<version>1.2.2.osgi</version> 
+		</dependency>
+		
+		<dependency> 
+			<groupId>org.slf4j</groupId> 
+			<artifactId>com.springsource.slf4j.api</artifactId> 
+			<version>1.5.2</version> 
+		</dependency>	
+		<dependency> 
+			<groupId>org.slf4j</groupId> 
+			<artifactId>com.springsource.slf4j.log4j</artifactId> 
+			<version>1.5.2</version> 
+		</dependency>		
+		<dependency> 
+			<groupId>org.slf4j</groupId> 
+			<artifactId>com.springsource.slf4j.org.apache.commons.logging</artifactId> 
+			<version>1.5.3</version> 
+		</dependency> 
+		
+		<dependency> 
+			<groupId>javax.servlet</groupId> 
+			<artifactId>com.springsource.javax.servlet</artifactId> 
+			<version>2.5.0</version> 
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency> 
+			<groupId>javax.servlet</groupId> 
+			<artifactId>com.springsource.javax.servlet.jsp.jstl</artifactId> 
+			<version>1.2.0.v20110728</version> 
+		</dependency>	
+		
+		<dependency> 
+			<groupId>javax.servlet</groupId> 
+			<artifactId>com.springsource.javax.servlet.jsp</artifactId> 
+			<version>2.1.0</version> 
+			<scope>provided</scope>
+		</dependency>		
+		 
+		<dependency> 
+			<groupId>javax.transaction</groupId> 
+			<artifactId>com.springsource.javax.transaction</artifactId> 
+			<version>1.1.0</version> 
+		</dependency>					
+		
+		<dependency> 
+			<groupId>org.junit</groupId> 
+			<artifactId>com.springsource.org.junit</artifactId> 
+			<version>4.7.0</version> 
+		</dependency>
+
+       <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>com.springsource.org.hibernate.annotations</artifactId>
+            <version>3.3.1.ga</version>
+        </dependency>		
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>com.springsource.org.hibernate.ejb</artifactId>
+            <version>3.3.2.GA</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.ehcache</groupId>
+            <artifactId>com.springsource.net.sf.ehcache</artifactId>
+            <version>1.4.1</version>
+        </dependency>
+        <dependency> 
+            <groupId>org.hibernate</groupId>
+            <artifactId>com.springsource.org.hibernate.validator</artifactId>
+            <version>4.0.0.GA</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>     
+           							
+		<dependency> 
+			<groupId>org.junit</groupId>
+			<artifactId>com.springsource.org.junit</artifactId>
+			<version>4.7.0</version>
+			<scope>test</scope>
+		</dependency>
+		
+	    <dependency>
+	    	<groupId>org.codehaus.jackson</groupId>
+	    	<artifactId>jackson-jaxrs</artifactId>
+	    	<version>1.6.3</version>
+	    	<type>jar</type>
+	    	<scope>compile</scope>
+	    </dependency>				
+	</dependencies>
+  <build>
+    <finalName>blogadmin</finalName>
+  </build>
+</project>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- Generated 23/05/2011 06:11:37 PM by Susan Inga (susan.inga@joedayz.pe) -->
+
+<hibernate-mapping>
+    <class name="com.joedayz.corespringtest.domain.Tema" table="tema">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION" length="50" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

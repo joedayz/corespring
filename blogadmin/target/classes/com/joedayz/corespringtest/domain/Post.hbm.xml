@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/05/2011 06:11:37 PM by Susan Inga (susan.inga@joedayz.pe) -->
+<hibernate-mapping>
+    <class name="com.joedayz.corespringtest.domain.Post" table="post">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tema" class="com.joedayz.corespringtest.domain.Tema" fetch="select" lazy="false">
+            <column name="ID_TEMA" not-null="true" />
+        </many-to-one>
+        <property name="titulo" type="string">
+            <column name="TITULO" length="50" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION" length="65535" not-null="true" />
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="FECHA_CREACION" length="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
