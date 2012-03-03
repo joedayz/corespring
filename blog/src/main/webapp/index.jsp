@@ -1,5 +1,3 @@
-<html>
-<body>
-<h2>Hello World!</h2>
-</body>
-</html>
+<%@ include file="/common/taglibs.jsp"%>
+
+<c:redirect url="/temas.htm"/>

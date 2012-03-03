@@ -9,6 +9,8 @@
   <url>http://maven.apache.org</url>
 
 
+
+
 	<repositories>
 		<repository>
 			<id>com.springsource.repository.bundles.release</id>
@@ -163,6 +165,7 @@
 			<groupId>javax.servlet</groupId> 
 			<artifactId>com.springsource.javax.servlet.jsp.jstl</artifactId> 
 			<version>1.2.0.v20110728</version> 
+			
 		</dependency>	
 		
 		<dependency> 
