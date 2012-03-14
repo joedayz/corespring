@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+	<form-beans>
+		<form-bean name="rewardForm" type="rewardsadmin.web.struts.RewardActionForm" />
+	</form-beans>
+	
+	<action-mappings>
+		<action path="/reward/new" forward="/WEB-INF/struts/reward/new.jsp" name="rewardForm" scope="request" validate="false" />
+		<action path="/reward/create" type="rewardsadmin.web.struts.RewardAction" name="rewardForm" input="/WEB-INF/struts/reward/new.jsp" scope="request" />
+		<action path="/reward/show/*" type="rewardsadmin.web.struts.RewardLookupAction">
+			<forward name="show" path="/WEB-INF/struts/reward/show.jsp" />
+		</action>
+	</action-mappings>
+	
+	<message-resources parameter="rewardsadmin.web.struts.MessageResources"/>
+	
+</struts-config>
