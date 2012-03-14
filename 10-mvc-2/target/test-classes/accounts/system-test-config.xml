@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd 
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<context:component-scan base-package="accounts" />
+	
+	<!-- Creates an in-memory "rewards" database populated with test data for fast testing -->
+	<bean id="dataSource" class="accounts.testdb.TestDataSourceFactory">
+		<property name="testDatabaseName" value="rewards"/>
+		<property name="schemaLocation" value="classpath:accounts/testdb/schema.sql"/>
+		<property name="testDataLocation" value="classpath:accounts/testdb/test-data.sql"/>
+	</bean>
+
+	<!-- A Hibernate SessionFactory for mapping Accounts and Restaurants from object to relation tables -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:accounts/internal/Account.hbm.xml</value>
+				<value>classpath:accounts/internal/Beneficiary.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Weaves in transactional advice around @Transactional methods -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<!-- Drives transactions using Hibernate APIs when requested -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+		
+	<!-- Translates Hibernate exceptions to Spring Data Access Exceptions -->
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+	
+
+</beans>
