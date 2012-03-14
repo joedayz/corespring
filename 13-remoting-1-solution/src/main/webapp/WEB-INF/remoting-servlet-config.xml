@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- HttpInvoker endpoint for the RewardNetwork -->
+	<bean name="/httpInvoker/rewardNetwork"
+		class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+		<property name="service" ref="rewardNetwork" />
+		<property name="serviceInterface" value="rewards.RewardNetwork" />
+	</bean>
+
+	<!-- Hessian endpoint for the RewardNetwork -->
+	<bean name="/hessian/rewardNetwork" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="rewardNetwork" />
+		<property name="serviceInterface" value="rewards.RewardNetwork" />
+	</bean>
+
+</beans>

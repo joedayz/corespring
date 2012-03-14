@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans 
+				http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="rewardNetwork" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+		<property name="serviceInterface" value="rewards.RewardNetwork"/>
+		<property name="serviceUrl" value="http://localhost:8080/13-remoting-1-solution/rewards/httpInvoker/rewardNetwork"/>
+	</bean>
+
+</beans>
