@@ -1,0 +1,13 @@
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- TODO 30: Add the mapping between account and the table. -->
+        
+        <!-- TODO 31: Add the mapping between beneficiary and the table. -->
+        
+        <!-- TODO 32: Add the mapping between restaurant and the table. -->
+        
+    </session-factory>
+</hibernate-configuration>
