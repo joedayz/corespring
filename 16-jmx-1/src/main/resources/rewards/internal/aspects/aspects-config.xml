@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:util="http://www.springframework.org/schema/util"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+							http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+							http://www.springframework.org/schema/aop
+							http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+							http://www.springframework.org/schema/util
+							http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+
+	<!-- Configuration for the aspects that apply to the application -->
+
+	<bean id="repositoryPerformanceMonitor" class="rewards.internal.aspects.RepositoryPerformanceMonitor">
+		<constructor-arg ref="monitorFactory"/>
+	</bean>
+
+	<bean id="monitorFactory" class="rewards.internal.monitor.jamon.JamonMonitorFactory"/>
+
+	<aop:aspectj-autoproxy>
+		<aop:include name="repositoryPerformanceMonitor"/>
+	</aop:aspectj-autoproxy>
+	
+	<!-- Configuration for JMX exposure in the application -->
+	
+	<!-- TODO 1: Export the monitorFactory bean with a name of 'statistics:name=monitorFactory' -->
+		
+</beans>
