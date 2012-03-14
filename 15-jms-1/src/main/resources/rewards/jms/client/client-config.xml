@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jms="http://www.springframework.org/schema/jms"
+       xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+			http://www.springframework.org/schema/jms	http://www.springframework.org/schema/jms/spring-jms-3.0.xsd">
+
+	<bean id="diningBatchProcessor" class="rewards.jms.client.JmsDiningBatchProcessor">
+	</bean>
+
+	<!-- TODO 05: define a JmsTemplate and inject it into the batch processor -->	
+	
+	<bean id="confirmationLogger" class="rewards.jms.client.RewardConfirmationLogger"/>
+	
+	<!-- TODO 07: define a second Spring listener-container with corresponding listener -->
+	<!-- this one should delegate to the 'log' method of the RewardConfirmationLogger -->
+	
+</beans>
