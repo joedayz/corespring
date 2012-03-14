@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:sec="http://www.springframework.org/schema/security" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:util="http://www.springframework.org/schema/util"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-3.0.xsd
+           http://www.springframework.org/schema/util 
+                           http://www.springframework.org/schema/util/spring-util-2.5.xsd">                         
+
+	<!-- Configuration for the FilterChain -->
+	<bean id="springSecurityFilterChain" class="org.springframework.security.web.FilterChainProxy">
+    	<sec:filter-chain-map path-type="ant">
+        	<sec:filter-chain pattern="/**" filters="httpSessionContextIntegrationFilter,logoutFilter,authenticationProcessingFilter,exceptionTranslationFilter,filterSecurityInterceptor" />
+		</sec:filter-chain-map>
+	</bean>	
+	
+	
+	<!-- Configuration for the individual Filters -->
+	<bean id="httpSessionContextIntegrationFilter" class="org.springframework.security.web.context.HttpSessionContextIntegrationFilter"/>
+
+	<bean id="logoutFilter" class="org.springframework.security.web.authentication.logout.LogoutFilter">
+		<constructor-arg value="/index.html"/> <!-- URL redirected to after logout -->
+		<constructor-arg>
+			<list>
+				<bean class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler"/>
+			</list>
+		</constructor-arg>
+	</bean>	
+
+	<bean id="authenticationProcessingFilter" class="org.springframework.security.web.authentication.AuthenticationProcessingFilter">
+		<property name="authenticationManager" ref="authenticationManager"/>
+		<property name="authenticationFailureHandler" ref="authenticationFailureHandler"/>
+		<property name="authenticationSuccessHandler" ref="authenticationSuccessHandler" />
+		<property name="filterProcessesUrl" value="/j_spring_security_check"/>
+	</bean>
+	
+	<bean id="authenticationFailureHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">	
+		<property name="defaultFailureUrl" value="/accounts/login.htm?login_error=1"/> 	
+	</bean>	
+
+	<bean id="authenticationSuccessHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler">
+		<property name="defaultTargetUrl" value="/"/> 	
+	</bean>	
+	
+   
+	<bean id="exceptionTranslationFilter" class="org.springframework.security.web.access.ExceptionTranslationFilter">
+		<property name="authenticationEntryPoint">
+			<bean class="org.springframework.security.web.authentication.AuthenticationProcessingFilterEntryPoint">
+				<property name="loginFormUrl" value="/accounts/login.htm"/>
+			</bean>
+		</property>
+		<property name="accessDeniedHandler">
+			<bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+				<property name="errorPage" value="/accounts/denied.htm"/>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="accessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
+    	<property name="allowIfAllAbstainDecisions" value="false"/>
+    	<property name="decisionVoters">
+        	<list>
+            	<bean class="org.springframework.security.access.vote.RoleVoter" />
+                <bean class="org.springframework.security.access.vote.AuthenticatedVoter" />
+			</list>
+		</property>
+	</bean>
+
+    <bean id="filterSecurityInterceptor" class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
+		<property name="authenticationManager" ref="authenticationManager" />
+        <property name="accessDecisionManager" ref="accessDecisionManager" />
+        <property name="securityMetadataSource">
+        	<sec:filter-security-metadata-source path-type="ant">
+            	<sec:intercept-url pattern="/accounts/edit*" access="ROLE_ADMIN" />
+                <sec:intercept-url pattern="/accounts/account*" access="ROLE_ADMIN,ROLE_MEMBER" />
+			</sec:filter-security-metadata-source>
+		</property>
+	</bean>	
+	
+	<!-- Configuration of the Authentication components -->
+    <bean id="authenticationManager" class="org.springframework.security.authentication.ProviderManager">
+		<property name="providers">
+	        <list>
+	        	<ref local="daoAuthenticationProvider" />
+			</list>
+        </property>
+	</bean>	
+
+	<bean id="daoAuthenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<property name="userDetailsService" ref="userDetailsService"/>
+	</bean>	
+	
+	<bean id="userDetailsService" class="org.springframework.security.core.userdetails.memory.InMemoryDaoImpl">
+		<property name="userProperties">
+			<util:properties location="/WEB-INF/users.properties"/>
+		</property>
+	</bean>
+
+</beans>
