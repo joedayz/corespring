@@ -1,0 +1,27 @@
+<!DOCTYPE dwr PUBLIC
+    "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN"
+    "http://getahead.ltd.uk/dwr/dwr20.dtd">
+<dwr>
+    <allow>
+        <create creator="spring" javascript="AccountManager">
+            <param name="class" value="accounts.AccountManager"/>
+            <param name="beanName" value="accountManager"/>
+            <include method="searchAccounts"/>
+        </create>
+        
+        <create creator="spring" javascript="BeneficiaryManager">
+            <param name="class" value="accounts.BeneficiaryManager"/>
+            <param name="beanName" value="beneficiaryManager"/>
+            <include method="saveBeneficiary"/>
+            <include method="findBeneficiariesByAccountId"/> 
+            <include method="deleteBeneficiary"/> 
+            <include method="isValidAllocationPercentage"/>             
+        </create>        
+        
+        <convert converter="bean" match="accounts.Account"/>
+        <convert converter="bean" match="accounts.Beneficiary" />
+        <convert converter="bean" match="common.money.MonetaryAmount"/>
+        <convert converter="bean" match="common.money.Percentage" />
+        
+    </allow>
+</dwr>
