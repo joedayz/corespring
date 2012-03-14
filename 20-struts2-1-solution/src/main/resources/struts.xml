@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+   <constant name="struts.devMode" value="true" />
+
+	<!-- Configuration for the default package. -->
+	<package name="default" extends="struts-default" >
+		
+    	<action name="accountSummary" class="accounts.action.AccountAction" method="list">
+    		<result type="dispatcher" name="success">/jsp/accountSummary.jsp</result>
+    	</action>
+    	
+		<action name="edit" class="accounts.action.AccountAction" method="edit">
+			<result name="input">/jsp/accountForm.jsp</result>
+		</action>    
+		
+		<action name="save" class="accounts.action.AccountAction" method="save">
+			<result name="success" type="redirectAction">
+				<param name="actionName">accountSummary</param>
+			</result>
+			<result name="input">/jsp/accountForm.jsp</result>
+		</action>			    	
+
+	</package>
+
+
+</struts>

@@ -1,0 +1,16 @@
+<!DOCTYPE validators PUBLIC
+	"-//OpenSymphony Group//XWork Validator 1.0//EN"
+	"http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<field name="account.number">
+		<field-validator type="requiredstring">
+			<message>Account number is required!</message>
+		</field-validator>
+	</field>
+	<field name="account.name">
+		<field-validator type="requiredstring">
+			<message>Account name is required!</message>
+		</field-validator>
+	</field>
+</validators>
