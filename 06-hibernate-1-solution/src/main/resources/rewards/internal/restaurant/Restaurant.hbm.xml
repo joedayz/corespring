@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="rewards.internal.restaurant" default-access="field" default-lazy="false">
+    <class name="Restaurant" table="T_RESTAURANT">
+        <id name="entityId" column="ID"/>
+        <property name="number" column="MERCHANT_NUMBER"/>
+        <property name="name" column="NAME"/>
+		<property name="benefitPercentage" column="BENEFIT_PERCENTAGE" type="common.money.PercentageUserType"/>
+		<property name="benefitAvailabilityPolicy" column="BENEFIT_AVAILABILITY_POLICY"
+			      type="rewards.internal.restaurant.BenefitAvailabilityPolicyUserType"/>
+    </class>
+</hibernate-mapping>
