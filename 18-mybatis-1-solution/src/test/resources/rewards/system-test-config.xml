@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+							http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<import resource="classpath:rewards/internal/application-config.xml"/>
+	
+	<!-- Creates an in-memory "rewards" database populated with test data for fast testing -->
+	<bean id="dataSource" class="rewards.testdb.TestDataSourceFactory">
+		<property name="testDatabaseName" value="rewards"/>
+		<property name="schemaLocation" value="classpath:rewards/testdb/schema.sql"/>
+		<property name="testDataLocation" value="classpath:rewards/testdb/test-data.sql"/>
+	</bean>
+	
+	<!-- A transaction manager for working with Hibernate SessionFactories -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+    <!-- define the SqlSessionFactory, notice that configLocation is not needed when you use MapperFactoryBean -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="classpath:rewards/internal/mybatis-config.xml" />
+    </bean>
+
+	<bean id="restaurantMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	  <property name="mapperInterface" value="rewards.internal.restaurant.RestaurantMapper" />
+	  <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>  
+	
+	<bean id="accountMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	  <property name="mapperInterface" value="rewards.internal.account.AccountMapper" />
+	  <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>  	  
+
+</beans>
