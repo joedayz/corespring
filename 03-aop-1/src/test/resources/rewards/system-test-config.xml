@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+
+
+	<!-- Configuration to support system testing the rewards application. -->
+
+	<!-- Imports application configuration -->
+	<import resource="classpath:rewards/internal/application-config.xml"/>
+	
+	<!-- TODO 7: Add the aspects-config.xml file as an import -->
+	
+	<!-- Creates an in-memory "rewards" database populated with test data for fast testing -->
+	<bean id="dataSource" class="rewards.testdb.TestDataSourceFactory">
+		<property name="testDatabaseName" value="rewards"/>
+		<property name="schemaLocation" value="classpath:rewards/testdb/schema.sql"/>
+		<property name="testDataLocation" value="classpath:rewards/testdb/test-data.sql"/>
+	</bean>
+			
+</beans>

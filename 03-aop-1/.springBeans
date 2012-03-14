@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[2.6.0.201103281100-PATCH]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
+	<configs>
+		<config>src/main/java/rewards/internal/aspects/aspects-config.xml</config>
+		<config>src/test/resources/rewards/system-test-config.xml</config>
+		<config>src/main/resources/rewards/internal/application-config.xml</config>
+	</configs>
+	<configSets>
+		<configSet>
+			<name><![CDATA[systemTest]]></name>
+			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>src/main/java/rewards/internal/aspects/aspects-config.xml</config>
+				<config>src/test/resources/rewards/system-test-config.xml</config>
+				<config>src/main/resources/rewards/internal/application-config.xml</config>
+			</configs>
+		</configSet>
+	</configSets>
+</beansProjectDescription>
