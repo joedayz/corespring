@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="accounts" default-access="field">
+	<class name="Beneficiary" table="T_ACCOUNT_BENEFICIARY">
+		<id name="entityId" column="ID">
+			<generator class="increment"/>
+		</id>
+		<property name="name" column="NAME" />
+		<property name="savings" column="SAVINGS" type="common.money.MonetaryAmountUserType" />
+		<property name="allocationPercentage" column="ALLOCATION_PERCENTAGE" type="common.money.PercentageUserType" />
+	</class>
+</hibernate-mapping>
