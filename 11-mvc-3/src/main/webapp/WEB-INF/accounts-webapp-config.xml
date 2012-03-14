@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- Configuration to support running the accounts application. -->
+
+	<!-- Imports application configuration -->
+	<import resource="classpath:accounts/internal/application-config.xml"/>
+	
+	<!-- A transaction manager for working with Hibernate SessionFactories -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- A Hibernate SessionFactory for mapping Accounts and Restaurants from object to relation tables -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:accounts/internal/Account.hbm.xml</value>
+				<value>classpath:accounts/internal/Beneficiary.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Creates an in-memory "rewards" database populated with test data for fast testing -->
+	<bean id="dataSource" class="accounts.testdb.TestDataSourceFactory">
+		<property name="testDatabaseName" value="rewards"/>
+		<property name="schemaLocation" value="classpath:accounts/testdb/schema.sql"/>
+		<property name="testDataLocation" value="classpath:accounts/testdb/test-data.sql"/>
+	</bean>
+
+</beans>
