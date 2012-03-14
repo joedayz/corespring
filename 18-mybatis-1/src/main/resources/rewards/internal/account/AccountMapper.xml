@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="rewards.internal.account.AccountMapper">
+
+    <resultMap id="account-result" type="rewards.internal.account.Account">
+    	<result property="entityId" column="ID"/>
+    	<!-- TODO 1: finish mapping the Account object by adding a mapping for the 'beneficiaries' property -->
+    </resultMap>
+
+	<select id="findByCreditCard" parameterType="string" resultMap="account-result">
+        select ID, NUMBER, NAME, CREDIT_CARD
+          from T_ACCOUNT
+         where CREDIT_CARD = #{creditCardNumber}
+	</select>
+
+	<select id="findBeneficiariesByAccountId" parameterType="int" resultType="rewards.internal.account.Beneficiary">
+        select ID as entityId,
+        	   <!-- TODO 2: finish the select statement and implicit parameter mapping for the Beneficiary class -->
+          from T_ACCOUNT_BENEFICIARY
+         where ACCOUNT_ID = #{value}
+	</select>
+
+	<update id="updateBeneficiary" parameterType="rewards.internal.account.Beneficiary">
+		update T_ACCOUNT_BENEFICIARY
+	    	set SAVINGS = <!-- TODO 3: map the beneficiary's savings property -->
+		where ACCOUNT_ID = <!-- TODO 4: map the account's entityId property -->
+	    	and NAME = <!-- TODO 5: map the beneficiary's name property -->   
+	</update>
+
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<!-- changes from the defaults -->
+		<setting name="lazyLoadingEnabled" value="false" />
+	</settings>
+	<typeAliases>
+		<typeAlias alias="restaurant" type="rewards.internal.restaurant.Restaurant" />
+		<typeAlias alias="account" type="rewards.internal.account.Account" />
+		<typeAlias alias="beneficiary" type="rewards.internal.account.Beneficiary" />
+	</typeAliases>
+	<typeHandlers>
+		
+  		<!-- TODO (6): Configure a type handler for the common.money.MonetaryAmount java type -->
+
+  		<!-- TODO (7): Configure a type handler for the common.money.Percentage java type -->
+
+		<typeHandler handler="rewards.internal.restaurant.BenefitAvailabilityPolicyTypeHandler"
+							 javaType="rewards.internal.restaurant.BenefitAvailabilityPolicy" />
+							 
+	</typeHandlers>	
+
+</configuration>
