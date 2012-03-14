@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+		targetNamespace="http://www.springsource.com/reward-network"
+		xmlns:rewards="http://www.springsource.com/reward-network"
+		elementFormDefault="qualified">
+
+	<element name="rewardAccountForDiningRequest">
+		<complexType>
+			<sequence>
+				<element name="dining" type="rewards:DiningType"/>
+			</sequence>
+		</complexType>
+	</element>
+
+	<complexType name="DiningType">
+		<!-- TODO 1: Add attributes that map from the Dining object -->
+		<!-- amount attribute of decimal type -->
+		<!-- creditCardNumber attribute of string type -->
+		<!-- merchantNumber attribute of string type -->
+	</complexType>
+
+	<element name="rewardAccountForDiningResponse">
+		<complexType>
+			<sequence>
+				<element name="rewardConfirmation" type="rewards:RewardConfirmationType"/>
+			</sequence>
+		</complexType>
+	</element>
+
+	<complexType name="RewardConfirmationType">
+		<sequence>
+			<element name="distribution" type="rewards:DistributionType" maxOccurs="unbounded"/>
+		</sequence>
+		<attribute name="confirmationNumber" type="string"/>
+		<attribute name="accountNumber" type="string"/>
+		<attribute name="amount" type="decimal"/>
+	</complexType>
+
+	<complexType name="DistributionType">
+		<attribute name="beneficiary" type="string"/>
+		<attribute name="amount" type="decimal"/>
+		<attribute name="percentage" type="decimal"/>
+		<attribute name="totalSavings" type="decimal"/>
+	</complexType>
+
+</schema>
