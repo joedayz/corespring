@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+							http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<!-- 
+		Configuration for the rewardsadmin Spring MVC dispatcher servlet "front controller"
+		Defines the web layer: beans here are specific to this web application.
+	 -->
+	 
+	<!-- Maps requests to this servlet to the appropriate handler -->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<value>
+				/reward/*/**=rewardController
+			</value>
+		</property>
+	</bean>
+	
+	<!-- Handles all "reward" requests -->
+	<bean id="rewardController" class="rewardsadmin.web.springmvc20.RewardController">
+		<constructor-arg ref="rewardNetwork"/>
+		<constructor-arg ref="rewardLookupService"/>
+	</bean>
+	
+	<!-- Maps logical view names to physical JSP view templates -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<property name="prefix" value="/WEB-INF/springmvc20/"/>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+ 
+ 	<!-- Resolves message codes to messages for the default locale -->
+ 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+ 		<property name="basename" value="rewardsadmin/web/springmvc20/messages"/>
+ 	</bean>
+ 	
+</beans>
