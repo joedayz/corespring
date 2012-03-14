@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="%p [%t] %c{1}.%M(%L) | %m%n"/>
+        </layout>
+    </appender>
+
+	
+	<!-- Application logger -->
+	<logger name="rewards">
+		<level value="error" />
+	</logger>
+	
+    <logger name="org.springframework">
+        <level value="error"/>
+    </logger>
+   
+	<!-- 3rdparty Loggers -->
+	<logger name="org.springframework.beans">
+		<level value="error" />
+	</logger>
+	
+	<logger name="org.springframework.jdbc">
+		<level value="error" />
+	</logger>
+
+	<logger name="org.springframework.transaction">
+		<level value="error" />
+	</logger>
+
+	<logger name="org.springframework.orm">
+		<level value="error" />
+	</logger>	
+
+    <root>
+        <level value="error"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</log4j:configuration>
