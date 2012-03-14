@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+							http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- Configuration for the rewards batch application. -->
+	<import resource="../rewards/internal/application-config.xml" />
+
+	<!-- Quartz Scheduler -->
+	<bean id="quartzScheduler"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="cronTrigger" />
+			</list>
+		</property>
+		<property name="overwriteExistingJobs" value="true" />
+		<!-- TODO: set up the schedulerContextAsMap with the rewardNetwork -->
+		<!-- This map is used to inject properties into the job detail delegate -->
+	</bean>
+
+	<!-- Quartz CronTrigger -->
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobDetail" />
+		<property name="cronExpression" value="0/3 * 7-23 * * ?" />
+	</bean>
+
+	<!-- Job detail is used by the Quartz trigger -->
+	<bean id="jobDetail" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="batch.internal.RewardBatchImpl" />
+		<property name="group" value="reward-batch" />
+		<!-- TODO: set up the jobDataAsMap to provide a resource input=/batch/input.csv -->
+	</bean>
+
+</beans>
