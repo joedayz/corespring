@@ -1,0 +1,20 @@
+<ejb-jar>
+    <enterprise-beans>
+        <session>
+            <display-name>PostageService</display-name>
+            <ejb-name>PostageService</ejb-name>
+            <home>pe.joedayz.dhlebj2.PostageServiceHome</home>
+            <remote>pe.joedayz.dhlebj2.PostageServiceRemote</remote>
+            <ejb-class>
+                pe.joedayz.dhlebj2.PostageServiceBean
+            </ejb-class>
+            <session-type>Stateless</session-type>
+            <transaction-type>Bean</transaction-type>
+            <env-entry>
+                <env-entry-name>ejb/BeanFactoryPath</env-entry-name>
+                <env-entry-type>java.lang.String</env-entry-type>
+                <env-entry-value>beans-ejb.xml</env-entry-value>
+            </env-entry>            
+        </session>
+    </enterprise-beans>
+</ejb-jar>

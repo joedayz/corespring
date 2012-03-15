@@ -1,0 +1,22 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/jee
+        http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">
+
+    <jee:remote-slsb id="postageService"
+                     jndi-name="PostageServiceRemoteHome"
+                     business-interface="pe.joedayz.dhlebj2.PostageService">
+        <jee:environment>
+            java.naming.factory.initial=org.apache.openejb.client.RemoteInitialContextFactory
+            java.naming.provider.url=ejbd://localhost:4201
+        </jee:environment>
+    </jee:remote-slsb>
+
+    <bean id="frontDesk"
+          class="pe.joedayz.dhlebj2.FrontDeskImpl">
+        <property name="postageService" ref="postageService"/>
+    </bean>
+</beans>
