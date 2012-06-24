@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/02/2010 12:08:38 PM by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="org.joedayz.corespringtest.model.Product" table="product">
+        <id name="idProduct" type="java.lang.Integer">
+            <column name="ID_PRODUCT" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="category" class="org.joedayz.corespringtest.model.Category" fetch="select">
+            <column name="ID_CATEGORY" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="NAME" length="50" not-null="true" />
+        </property>
+        <property name="code" type="string">
+            <column name="CODE" length="20" not-null="true" />
+        </property>
+        <property name="price" type="big_decimal">
+            <column name="PRICE" precision="10" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="DESCRIPTION" length="250" />
+        </property>
+    </class>
+</hibernate-mapping>
