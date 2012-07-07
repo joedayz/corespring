@@ -24,6 +24,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import accounts.Account;
 import accounts.AccountManager;
 
+
+/**
+ * 
+ * @author josediaz
+ *
+ */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:accounts/system-test-config.xml"})
 public class ReportPoiControllerTest {
