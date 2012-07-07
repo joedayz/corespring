@@ -24,6 +24,7 @@ public class Dining implements Serializable {
 	private String creditCardNumber;
 
 	private String merchantNumber;
+	private String sac;
 
 	private SimpleDate date;
 
