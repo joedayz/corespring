@@ -16,7 +16,7 @@ public class AccountContribution {
 
 	private MonetaryAmount amount;
 
-	private Set<Distribution> distributions;
+	private Set<Distribution> distributions;    x
 
 	/**
 	 * Creates a new account contribution.
