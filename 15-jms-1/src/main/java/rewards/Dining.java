@@ -12,12 +12,11 @@ import common.money.MonetaryAmount;
  * addition, the merchant number should map to a restaurant in the network.
  * 
  * A value object. Immutable.
+ * 
  */
 public class Dining implements Serializable {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -6310963906792344930L;
 
 	private MonetaryAmount amount;
