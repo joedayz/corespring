@@ -19,6 +19,12 @@ public class AccountContribution {
 	private Set<Distribution> distributions;
 
 	/**
+	 * 
+	 * 
+	 * }
+	 * 
+	 * 
+	 * 
 	 * Creates a new account contribution.
 	 * @param accountNumber the number of the account the contribution was made
 	 * @param amount the total contribution amount
