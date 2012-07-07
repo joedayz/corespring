@@ -12,6 +12,7 @@ import common.money.MonetaryAmount;
  * addition, the merchant number should map to a restaurant in the network.
  * 
  * A value object. Immutable.
+ * @author roel
  */
 public class Dining implements Serializable {
 
