@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="rewards.internal.account.AccountMapper">
+
+    <resultMap id="account-result" type="rewards.internal.account.Account">
+    	<result property="entityId" column="ID"/>
+    	<result property="number" column="NUMBER"/>
+    	<result property="name" column="NAME"/>
+    	<result property="creditCardNumber" column="CREDIT_CARD"/>
+    	<collection property="beneficiaries" javaType="java.util.Set" column="ID" select="findBeneficiariesByAccountId"/>
+    </resultMap>
+
+	<select id="findByCreditCard" parameterType="string" resultMap="account-result">
+        select ID, NUMBER, NAME, CREDIT_CARD
+          from T_ACCOUNT
+         where CREDIT_CARD = #{creditCardNumber}
+	</select>
+
+	<select id="findBeneficiariesByAccountId" parameterType="int" resultType="rewards.internal.account.Beneficiary">
+        select ID as entityId,
+        	   ACCOUNT_ID as accountId,
+               NAME as name,
+               ALLOCATION_PERCENTAGE as allocationPercentage,
+               SAVINGS as savings
+          from T_ACCOUNT_BENEFICIARY
+         where ACCOUNT_ID = #{value}
+	</select>
+
+	<update id="updateBeneficiary" parameterType="rewards.internal.account.Beneficiary">
+		update T_ACCOUNT_BENEFICIARY
+	    	set SAVINGS = #{savings}
+		where ACCOUNT_ID = #{accountId}
+	    	and NAME = #{name}			         
+	</update>
+
+</mapper>
