@@ -2,6 +2,8 @@ package rewards.jms.client;
 
 import java.util.List;
 
+import org.springframework.jms.core.JmsTemplate;
+
 import rewards.Dining;
 
 /**
@@ -9,9 +11,18 @@ import rewards.Dining;
  */
 public class JmsDiningBatchProcessor implements DiningBatchProcessor {
 
-	// TODO 03: provide a JmsTemplate field
+	
+	private JmsTemplate jmsTemplate;
+	
 
+	public void setJmsTemplate(JmsTemplate jmsTemplate) {
+		this.jmsTemplate = jmsTemplate;
+	}	
+	
 	public void processBatch(List<Dining> batch) {
-		// TODO 04: send each Dining instance to the queue
+		for (Dining dining : batch) {
+			jmsTemplate.convertAndSend(dining);
+		}
 	}
+	
 }

@@ -46,11 +46,11 @@ public class DiningBatchProcessorTests extends AbstractTransactionalJUnit4Spring
 		batch.add(dining4);
 		batch.add(dining5);
 
-		// TODO 08: invoke the DiningBatchProcessor to send dining list via JMS
-
+		
+		diningBatchProcessor.processBatch(batch);
 		waitForBatch(batch.size(), 1000);
 
-		// TODO 09: assert that the confirmation logger has received the entire batch
+		assertEquals(batch.size(), confirmationLogger.getConfirmations().size());
 	}
 
 	private void waitForBatch(int batchSize, int timeout) throws InterruptedException {
