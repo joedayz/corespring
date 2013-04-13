@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-init-method="prenderLuces" default-destroy-method="apagarLuces">
+
+
+
+	<bean id="johnny" class="com.mycompany.proybeans.Malabarista">
+		<constructor-arg value="15" />
+	</bean>
+
+
+	<bean id="johnnyPoeta" class="com.mycompany.proybeans.MalabaristaPoeta">
+		<constructor-arg value="15" />
+		<constructor-arg ref="poema29" />
+	</bean>
+
+	<bean id="poema29" class="com.mycompany.proybeans.Poema29" />
+
+
+	<bean id="etapa" class="com.mycompany.proybeans.Etapa"
+		factory-method="getInstance" />
+
+	<bean id="ticket" class="com.mycompany.proybeans.Ticket" scope="prototype" />
+
+	<bean id="auditorio" class="com.mycompany.proybeans.Auditorio" />
+
+	<bean id="estadio" class="com.mycompany.proybeans.Estadio" />
+
+
+	<bean id="felipe" class="com.mycompany.proybeans.Musico">
+		<property name="cancion" value="Toromata" />
+		<property name="instrumento" ref="saxofon" />
+	</bean>
+
+	<bean id="saxofon" class="com.mycompany.proybeans.Saxofon" />
+
+	<bean id="piano" class="com.mycompany.proybeans.Piano" />
+
+	<bean id="felipe2" class="com.mycompany.proybeans.Musico">
+		<property name="cancion" value="Toromata" />
+		<property name="instrumento" ref="piano" />
+	</bean>
+
+	<bean id="elias" class="com.mycompany.proybeans.Musico">
+		<property name="cancion" value="Clocks de Coldplay" />
+		<property name="instrumento">
+			<bean class="com.mycompany.proybeans.Piano"/>
+		</property>
+	</bean>
+
+
+</beans>
