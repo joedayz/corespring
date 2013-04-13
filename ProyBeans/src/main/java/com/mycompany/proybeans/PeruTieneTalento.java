@@ -33,8 +33,8 @@ public class PeruTieneTalento {
 		System.out.println(ticket2);
 		
 		// request, session, global-session
-
-		
+		HombreBanda banda = (HombreBanda) ctx.getBean("deborah");
+		banda.ejecutar();
 		
 	}
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
-	default-init-method="prenderLuces" default-destroy-method="apagarLuces">
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
 
@@ -29,10 +29,8 @@
 	<bean id="estadio" class="com.mycompany.proybeans.Estadio" />
 
 
-	<bean id="felipe" class="com.mycompany.proybeans.Musico">
-		<property name="cancion" value="Toromata" />
-		<property name="instrumento" ref="saxofon" />
-	</bean>
+	<bean id="felipe" class="com.mycompany.proybeans.Musico" 
+		p:cancion="Toromata"  p:instrumento-ref="saxofon"/>
 
 	<bean id="saxofon" class="com.mycompany.proybeans.Saxofon" />
 
@@ -49,6 +47,42 @@
 			<bean class="com.mycompany.proybeans.Piano"/>
 		</property>
 	</bean>
-
+	
+	<bean id="guitarra" class="com.mycompany.proybeans.Guitarra"/>
+	
+<!-- 	<bean id="deborah" class="com.mycompany.proybeans.HombreBanda">
+		<property name="instrumentos">
+			<list>   Solo trabaja con propiedades que trabajan con java.util.Collection o Array 
+				<ref bean="saxofon"/>
+				<ref bean="piano"/>
+				<ref bean="guitarra"/>
+				<ref bean="guitarra"/>
+			</list>
+		</property>
+	</bean>
+	
+		
+	<bean id="deborah2" class="com.mycompany.proybeans.HombreBanda">
+		<property name="instrumentos">
+			<set>   Solo trabaja con propiedades que trabajan con java.util.Collection o Array 
+				<ref bean="saxofon"/>
+				<ref bean="piano"/>
+				<ref bean="guitarra"/>
+				<ref bean="guitarra"/>
+			</set>
+		</property>
+	</bean> -->
+	
+	
+	<bean id="deborah" class="com.mycompany.proybeans.HombreBanda">
+		<property name="instrumentos">
+			<map>   <!-- Solo trabaja con propiedades que trabajan con java.util.Collection o Array  -->
+				<entry key="saxofon" value-ref="saxofon"/>
+				<entry key="piano" value-ref="piano"/>
+				<entry key="guitarra" value-ref="guitarra"/>
+				
+			</map>
+		</property>
+	</bean>
 
 </beans>
