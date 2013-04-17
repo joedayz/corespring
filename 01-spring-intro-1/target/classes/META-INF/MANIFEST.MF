@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 Built-By: josediaz
-Build-Jdk: 1.6.0_31
+Build-Jdk: 1.7.0_10
 Created-By: Maven Integration for Eclipse
 
