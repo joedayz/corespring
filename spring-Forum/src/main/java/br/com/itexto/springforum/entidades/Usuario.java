@@ -116,6 +116,7 @@ public class Usuario implements Serializable{
 	}
 
 	public void setPassword(String password) {
+		setHashPassword(org.apache.commons.codec.digest.DigestUtils.sha256Hex(password));
 		this.password = password;
 	}
 
