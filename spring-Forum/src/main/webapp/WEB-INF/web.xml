@@ -4,6 +4,19 @@
   <display-name>Spring Forum</display-name>
   
   
+  <listener>
+  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<param-value>
+  		/WEB-INF/spring/spring-servlet.xml
+  		/WEB-INF/spring/spring-data.xml
+  	</param-value>
+  </context-param>
+  
+  
   <servlet>
 	<servlet-name>DispatcherServlet</servlet-name>  
   	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
