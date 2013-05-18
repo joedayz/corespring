@@ -3,6 +3,8 @@ package br.com.itexto.springforum.controladoras;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.itexto.springforum.dao.DAOTopico;
 import br.com.itexto.springforum.dao.DAOUsuario;
+import br.com.itexto.springforum.entidades.Topico;
 import br.com.itexto.springforum.entidades.Usuario;
 
 
@@ -25,6 +29,11 @@ public class UsuarioController {
 	private DAOUsuario daoUsuario;
 	public DAOUsuario getDaoUsuario() {return daoUsuario;}
 	public void setDaoUsuario(DAOUsuario dao) {daoUsuario = dao;}
+	
+	@Autowired
+	private DAOTopico daoTopico;
+	public DAOTopico getDaoTopico() {return daoTopico;}
+	public void setDaoTopico(DAOTopico dao) {daoTopico = dao;}
 	
 	@RequestMapping("/usuario/avatar/{login}")
 	@ResponseBody
@@ -56,5 +65,18 @@ public class UsuarioController {
 	}
 	
 	
+	@RequestMapping("/usuario/posts/{login}")
+	public String topicosUsuario(@PathVariable("login") String login, Map<String, Object> model) {
+		model.put("topicos", getDaoTopico().getTopicosPorAutor(getDaoUsuario()
+				.getUsuario(login)));
+		
+		return "usuario/posts";
+	}	
+	
+	@RequestMapping("/usuario/postsJSON/{login}")
+	@ResponseBody
+	public List<Topico> topicosUsuarioJson(@PathVariable("login") String login) {
+		return getDaoTopico().getTopicosPorAutor(getDaoUsuario().getUsuario(login));
+	}
 	
 }

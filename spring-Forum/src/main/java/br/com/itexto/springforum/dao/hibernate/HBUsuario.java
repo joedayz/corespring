@@ -26,6 +26,11 @@ public class HBUsuario extends HBDAO<Usuario> implements DAOUsuario {
 		return (Usuario) query.uniqueResult();
 	}
 
+	public Usuario getUsuario(String login) {
+		Query query = getSession().createQuery("from Usuario usr where usr.login = ?");
+		query.setString(0, login);
+		return (Usuario) query.uniqueResult();
+	}
 
 
 }

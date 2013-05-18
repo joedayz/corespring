@@ -57,12 +57,12 @@
 <br />
 <div class="row">
 	<h4>&Uacute;ltimos posts</h4>
-	<a href="javascript:exporPosts('${usuario.login}')">Mostrar posts</a>
+	<a href="javascript:mostrarPosts('${usuario.login}')">Mostrar posts</a>
 	<div id="posts"></div>
 </div>
 
 <script type="text/javascript">
-	function exporPosts(login) {
+	function mostrarPosts(login) {
 		var url = "<c:url value="/usuario/posts/"/>" + login
 		$("#posts").load(url)
 	}

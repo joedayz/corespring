@@ -24,6 +24,8 @@
     	<put-attribute name="titulo" value="Detalle del Usuario"/>
     </definition>
     
-
+   <definition name="usuario/posts" template="/views/usuario/postsUsuario.jsp"/>
+    	
+    
 
 </tiles-definitions>
