@@ -37,6 +37,15 @@
 			<value>.jsp</value>
 		</property>
 	</bean-->
+	
+	
+		<!--  Configuracion para retornar recursos estaticos
+		en nuestra aplicación. Cacheables a 120 seg 
+		 
+	-->
+	<mvc:resources mapping="/recursos/**" 
+				   location="/recursos/"
+				   cache-period="120"/>
 
 
 </beans>
