@@ -48,4 +48,11 @@
 				   cache-period="120"/>
 
 
+	<!-- Habilitando upload de archivos -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="50000000"/>  <!-- si pones -1 es cualquier tamaño -->
+	</bean>
+	
+
+
 </beans>

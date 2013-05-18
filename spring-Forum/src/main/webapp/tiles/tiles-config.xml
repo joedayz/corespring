@@ -19,7 +19,11 @@
 		<put-attribute name="titulo" value="Bienvenido(a)!"/>
 	</definition>
 
-
+    <definition name="usuario/show" extends="main">
+    	<put-attribute name="contenido" value="/views/usuario/show.jsp"/>
+    	<put-attribute name="titulo" value="Detalle del Usuario"/>
+    </definition>
+    
 
 
 </tiles-definitions>

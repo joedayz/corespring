@@ -5,7 +5,7 @@
 
 	<div class="row">
 		<div class="twelve columns">
-			<img src="recursos/images/chamada.png" />
+			<img src="recursos/images/chamada.jpg" />
 		</div>
 	</div>
 
