@@ -11,16 +11,23 @@
 			
 			
 			
+			<sec:authorize access="isAnonymous()">
 			
 			<form style="margin-top: 1.0em;" action="<c:url value="/j_spring_security_check"/>" method="post">
 				<div class="row">
 					<input type="text" name="j_username" placeholder="Usu&aacute;rio" class="three columns right"/>
-					<input type="password" name="j_password" placeholder="Senha" class="three columns right"/>
+					<input type="password" name="j_password" placeholder="Password" class="three columns right"/>
 					<input type="submit" value="Entrar" class="tiny button success" class="three columns right"/>&nbsp;
-					<a href="<c:url value='registro'/>" class="tiny button success">Registre-se</a>
+					<a href="<c:url value='registro'/>" class="tiny button success">Registrese</a>
 				</div>
 				
 			</form>
+			
+			</sec:authorize>
+			<sec:authorize access="isAuthenticated()">
+				Bienvenido(a) <sec:authentication property="principal"/> - <a href="<c:url value="/j_spring_security_logout"/>">Salir</a>
+			</sec:authorize>
+
 			
 			
 			

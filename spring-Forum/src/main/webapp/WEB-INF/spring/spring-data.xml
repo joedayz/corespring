@@ -36,7 +36,9 @@
 		<property name="annotatedClasses">
 			<array>
 				<value>br.com.itexto.springforum.entidades.Usuario</value>
+				<value>br.com.itexto.springforum.entidades.PermisoUsuario</value>
 				<value>br.com.itexto.springforum.entidades.Tema</value>
+				<value>br.com.itexto.springforum.entidades.Topico</value>
 			</array>
 		</property>
 	
