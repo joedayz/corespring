@@ -1,0 +1,4 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Thu Mar 08 13:48:31 PET 2012
+com.springsource.bundlor.maven-1.0.0.RELEASE.jar>repository.plugin.springsource.release=
+com.springsource.bundlor.maven-1.0.0.RELEASE.pom>repository.plugin.springsource.release=

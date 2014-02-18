@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.springsource.bundlor</groupId>
+	<artifactId>com.springsource.bundlor.maven</artifactId>
+	<version>1.0.0.RELEASE</version>
+	<packaging>maven-plugin</packaging>
+	<name>Bundlor Maven Plugin</name>
+	<description><![CDATA[A Maven plugin for auto-generation of OSGi manifests using the SpringSource Bundlor utility.
+]]></description>
+	<properties>
+		<org.junit>4.4.0</org.junit>
+		<org.objectweb.asm>3.1.0</org.objectweb.asm>
+		<com.springsource.util>2.0.0.RELEASE</com.springsource.util>
+	</properties>
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.springframework.build.aws</groupId>
+				<artifactId>org.springframework.build.aws.maven</artifactId>
+				<version>2.0.0.RELEASE</version>
+			</extension>
+		</extensions>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<includes>
+						<include>**/*Tests.java</include>
+					</includes>
+					<excludes>
+						<exclude>**/Abstract*.java</exclude>
+					</excludes>
+					<junitArtifactName>org.junit:com.springsource.org.junit</junitArtifactName>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>org.junit</groupId>
+			<artifactId>com.springsource.org.junit</artifactId>
+			<version>${org.junit}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.springsource.bundlor</groupId>
+			<artifactId>com.springsource.bundlor</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.springsource.bundlor</groupId>
+			<artifactId>com.springsource.bundlor.blint</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.springsource.util</groupId>
+			<artifactId>com.springsource.util.common</artifactId>
+			<version>${com.springsource.util}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.springsource.util</groupId>
+			<artifactId>com.springsource.util.osgi</artifactId>
+			<version>${com.springsource.util}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.springsource.util</groupId>
+			<artifactId>com.springsource.util.parser.manifest</artifactId>
+			<version>${com.springsource.util}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-plugin-api</artifactId>
+			<version>2.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.springsource.util</groupId>
+			<artifactId>com.springsource.util.math</artifactId>
+			<version>${com.springsource.util}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.objectweb.asm</groupId>
+			<artifactId>com.springsource.org.objectweb.asm</artifactId>
+			<version>${org.objectweb.asm}</version>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
+	
+	<scm>
+		<url>https://src.springsource.com/svn/dm-server-bundlor/main-branches/trunk/com.springsource.bundlor.maven</url>
+		<connection>scm:svn:https://src.springsource.com/svn/dm-server-bundlor/main-branches/trunk/com.springsource.bundlor.maven</connection>
+		<developerConnection>scm:svn:https://src.springsource.com/svn/dm-server-bundlor/main-branches/trunk/com.springsource.bundlor.maven</developerConnection>
+	</scm>
+	<distributionManagement>
+		<repository>
+			<id>com.springsource.repository.bundles.release</id>
+			<name>SpringSource Enterprise Bundle Repository -
+				SpringSource Bundle Releases</name>
+			<url>s3://repository.springsource.com/maven/bundles/release</url>
+		</repository>
+		<snapshotRepository>
+			<id>com.springsource.repository.bundles.snapshot</id>
+			<name>SpringSource Enterprise Bundle Repository -
+				SpringSource Bundle Snapshots</name>
+			<url>s3://repository.springsource.com/maven/bundles/snapshot</url>
+		</snapshotRepository>
+		<site>
+			<id>static.springframework.org</id>
+			<url>
+				scp://static.springframework.org:/var/www/domains/springframework.org/static/htdocs/docs/springsource-bundlor 
+			</url>
+		</site>
+	</distributionManagement>
+</project>
