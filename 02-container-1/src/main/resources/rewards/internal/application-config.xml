@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+">
+
+    <bean id="rewardNetwork" 
+          class="rewards.internal.RewardNetworkImpl">
+        <constructor-arg ref="accountRepository"/>
+        <constructor-arg ref="restaurantRepository"/>
+        <constructor-arg ref="rewardRepository"/>
+    </bean>    
+    
+    <bean id="accountRepository" 
+          class="rewards.internal.account.JdbcAccountRepository">
+        <constructor-arg ref="dataSource"/>
+    </bean>        
+    
+                
+    <bean id="restaurantRepository" 
+          class="rewards.internal.restaurant.JdbcRestaurantRepository">
+        <constructor-arg ref="dataSource"/>
+    </bean>        
+    
+    <bean id="rewardRepository" 
+          class="rewards.internal.reward.JdbcRewardRepository">
+        <constructor-arg ref="dataSource"/>
+    </bean>        
+                                                                                        
+    
+</beans>

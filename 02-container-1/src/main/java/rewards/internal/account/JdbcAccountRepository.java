@@ -19,6 +19,10 @@ public class JdbcAccountRepository
 				implements AccountRepository {
 
 	private DataSource dataSource;
+        
+        public JdbcAccountRepository(DataSource dataSource){
+            this.dataSource = dataSource;
+        }
 
 	public Account findByCreditCard(String creditCardNumber) {
 		

@@ -15,6 +15,7 @@ import rewards.internal.restaurant.RestaurantRepository;
 import rewards.internal.reward.RewardRepository;
 
 import common.money.MonetaryAmount;
+import rewards.RewardNetwork;
 
 /**
  * Unit tests for the RewardNetworkImpl application logic. Configures the implementation with stub repositories
@@ -26,6 +27,8 @@ import common.money.MonetaryAmount;
 @RunWith(JUnit4.class)
 public class RewardNetworkImplTests {
 
+        private RewardNetwork rewardNetwork;
+    
 	@Before
 	public void setUp() throws Exception {
 		// create stubs to facilitate fast in-memory testing with dummy data and no external dependencies
@@ -33,8 +36,9 @@ public class RewardNetworkImplTests {
 		RestaurantRepository restaurantRepo = new StubRestaurantRepository();
 		RewardRepository rewardRepo = new StubRewardRepository();
 
-		// TODO: create your RewardNetworkImpl you will test. Inject what it needs to work and assign it to a private
-		// field named 'rewardNetwork'
+		
+		rewardNetwork = new RewardNetworkImpl(accountRepo, 
+                                restaurantRepo, rewardRepo);
 
 	}
 
@@ -44,7 +48,7 @@ public class RewardNetworkImplTests {
 		Dining dining = Dining.createDining("100.00", "1234123412341234", "1234567890");
 
 		// TODO: replace 'null' below with a call to the 'rewardNetwork' to test its rewardAccountFor(Dining) method
-		RewardConfirmation confirmation = null;
+		RewardConfirmation confirmation = rewardNetwork.rewardAccountFor(dining);
 
 		// assert the expected reward confirmation results
 		assertNotNull(confirmation);

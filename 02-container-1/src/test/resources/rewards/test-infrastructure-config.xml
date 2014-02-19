@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
-	<!-- 
+	<!-- test-infrastructure-config
 	     Infrastructure configuration to support system testing the rewards application.
 	
 		 These beans are defined in a separate file to isolate infrastructure config from application config,
@@ -17,9 +17,13 @@
 		 might use a lightweight in-memory DataSource, while in production you connect to a database server
 		 with a connection pool.
 	-->
+        
+        <import resource="classpath:rewards/internal/application-config.xml"/>
 	
-	<!-- TODO: Define a bean named 'dataSource' that configures a test DataSource -->
-	
+	<jdbc:embedded-database id="dataSource" type="H2">
+            <jdbc:script location="classpath:rewards/testdb/schema.sql"/>
+            <jdbc:script location="classpath:rewards/testdb/test-data.sql"/>
+        </jdbc:embedded-database>
 
 				
 </beans>
