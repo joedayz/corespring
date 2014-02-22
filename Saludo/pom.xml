@@ -6,7 +6,7 @@
   <version>3.0</version>
   
   <properties>
-    <spring.version>3.0.5.RELEASE</spring.version>
+    <spring.version>4.0.1.RELEASE</spring.version>
     <junit.version>4.7</junit.version>
 	<log4j.version>1.2.13</log4j.version>
   </properties>
