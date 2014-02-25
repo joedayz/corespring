@@ -8,6 +8,9 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import rewards.AccountContribution;
 import rewards.Dining;
 import rewards.RewardConfirmation;
@@ -18,13 +21,12 @@ import common.datetime.SimpleDate;
  * JDBC implementation of a reward repository that records the result of a reward transaction by inserting a reward
  * confirmation record.
  */
+@Repository
 public class JdbcRewardRepository implements RewardRepository {
 
+	@Autowired
 	private DataSource dataSource;
         
-        public JdbcRewardRepository(DataSource dataSource){
-            this.dataSource = dataSource;
-        }        
 
 	public RewardConfirmation confirmReward(AccountContribution contribution, Dining dining) {
 		String sql = "insert into T_REWARD (CONFIRMATION_NUMBER, REWARD_AMOUNT, REWARD_DATE, ACCOUNT_NUMBER, DINING_MERCHANT_NUMBER, DINING_DATE, DINING_AMOUNT) values (?, ?, ?, ?, ?, ?, ?)";

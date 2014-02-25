@@ -7,7 +7,9 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.stereotype.Repository;
 
 import common.money.MonetaryAmount;
 import common.money.Percentage;
@@ -15,15 +17,13 @@ import common.money.Percentage;
 /**
  * Loads accounts from a data source using the JDBC API.
  */
+@Repository
 public class JdbcAccountRepository 
 				implements AccountRepository {
 
+	@Autowired
 	private DataSource dataSource;
         
-        public JdbcAccountRepository(DataSource dataSource){
-            this.dataSource = dataSource;
-        }
-
 	public Account findByCreditCard(String creditCardNumber) {
 		
 		String sql = "select a.ID as ID, a.NUMBER as ACCOUNT_NUMBER, " +

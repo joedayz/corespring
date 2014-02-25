@@ -7,20 +7,22 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.stereotype.Repository;
 
 import common.money.Percentage;
 
 /**
  * Loads restaurants from a data source using the JDBC API.
  */
+@Repository
 public class JdbcRestaurantRepository implements RestaurantRepository {
 
+	@Autowired
 	private DataSource dataSource;
         
-        public JdbcRestaurantRepository(DataSource dataSource){
-            this.dataSource = dataSource;
-        }
+
 
 	public Restaurant findByMerchantNumber(String merchantNumber) {
 		String sql = "select MERCHANT_NUMBER, NAME, BENEFIT_PERCENTAGE from T_RESTAURANT where MERCHANT_NUMBER = ?";

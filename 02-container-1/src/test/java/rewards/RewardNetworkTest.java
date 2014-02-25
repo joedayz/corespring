@@ -5,35 +5,31 @@
  */
 package rewards;
 
-import common.money.MonetaryAmount;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import org.junit.Before;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import common.money.MonetaryAmount;
 
 /**
  *
  * @author josediaz
  */
-@RunWith(JUnit4.class)
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(
+		locations={
+				"classpath:rewards/test-infrastructure-config.xml"})
 public class RewardNetworkTest {
 
+	@Autowired
     private RewardNetwork rewardNetwork;
 
-    @Before
-    public void setup() {
-        ApplicationContext context
-                = new ClassPathXmlApplicationContext(new String[]{
-                    "classpath:/rewards/test-infrastructure-config.xml"});
 
-        rewardNetwork = (RewardNetwork) context.getBean("rewardNetwork");
-    }
 
     @Test
     public void testRewardForDining() {

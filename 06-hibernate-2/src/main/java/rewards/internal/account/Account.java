@@ -3,6 +3,10 @@ package rewards.internal.account;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import rewards.AccountContribution;
 import rewards.AccountContribution.Distribution;
 
@@ -19,7 +23,8 @@ import common.money.Percentage;
  * An entity. An aggregate.
  */
 
-//TODO 1: Add persistence annotation of account table for mapping with account class
+@Entity
+@Table(name="T_ACCOUNT")
 public class Account {
 
 	private Long entityId;
@@ -46,8 +51,8 @@ public class Account {
 		this.name = name;
 	}
 	
-	//TODO 2: Add id annotation 
-    //TODO 3: Add id generation strategy. Use GenerationType.AUTO   
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)  
     //TODO 4: Add the mapping between the column and the attribute	
 	public Long getEntityId() {
 		return entityId;

@@ -1,6 +1,9 @@
 package rewards.internal;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import rewards.AccountContribution;
 import rewards.Dining;
 import rewards.RewardConfirmation;
@@ -21,6 +24,7 @@ import common.money.MonetaryAmount;
  * 
  * Said in other words, this class implements the "reward account for dining" use case.
  */
+@Service
 public class RewardNetworkImpl implements RewardNetwork {
 
 	private AccountRepository accountRepository;
@@ -35,6 +39,7 @@ public class RewardNetworkImpl implements RewardNetwork {
 	 * @param restaurantRepository the repository for loading restaurants that determine how much to reward
 	 * @param rewardRepository the repository for recording a record of successful reward transactions
 	 */
+	@Autowired
 	public RewardNetworkImpl
 		(AccountRepository accountRepository, 
 				RestaurantRepository restaurantRepository,
