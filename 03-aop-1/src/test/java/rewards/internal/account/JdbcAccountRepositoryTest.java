@@ -24,7 +24,7 @@ import static org.junit.Assert.*;
  * behavior works as expected.
  */
 @RunWith(JUnit4.class)
-public class JdbcAccountRepositoryTests {
+public class JdbcAccountRepositoryTest {
 
 	private JdbcAccountRepository repository;
 

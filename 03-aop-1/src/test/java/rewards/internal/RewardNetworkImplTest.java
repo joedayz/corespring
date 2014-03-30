@@ -1,30 +1,47 @@
-package rewards;
+package rewards.internal;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.junit.runners.JUnit4;
+
+import rewards.AccountContribution;
+import rewards.Dining;
+import rewards.RewardConfirmation;
+import rewards.internal.account.AccountRepository;
+import rewards.internal.restaurant.RestaurantRepository;
+import rewards.internal.reward.RewardRepository;
 
 import common.money.MonetaryAmount;
 
 import static org.junit.Assert.*;
-
 /**
- * A system test that verifies the components of the RewardNetwork application work together to reward for dining
- * successfully. Uses Spring to bootstrap the application for use in a test environment.
+ * Unit tests for the RewardNetworkImpl application logic. Configures the implementation with stub repositories
+ * containing dummy data for fast in-memory testing without the overhead of an external data source.
+ * 
+ * Besides helping catch bugs early, tests are a great way for a new developer to learn an API as he or she can see the
+ * API in action. Tests also help validate a design as they are a measure for how easy it is to use your code.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:rewards/system-test-config.xml"})
-public class RewardNetworkTests {
+@RunWith(JUnit4.class)
+public class RewardNetworkImplTest {
 
 	/**
 	 * The object being tested.
 	 */
-	@Autowired
-	private RewardNetwork rewardNetwork;
-	
-	@Test
+	private RewardNetworkImpl rewardNetwork;
+
+	@Before
+	public void setUp() throws Exception {
+		// create stubs to facilitate fast in-memory testing with dummy data and no external dependencies
+		AccountRepository accountRepo = new StubAccountRepository();
+		RestaurantRepository restaurantRepo = new StubRestaurantRepository();
+		RewardRepository rewardRepo = new StubRewardRepository();
+
+		// setup the object being tested by handing what it needs to work
+		rewardNetwork = new RewardNetworkImpl(accountRepo, restaurantRepo, rewardRepo);
+	}
+
+    @Test
 	public void testRewardForDining() {
 		// create a new dining of 100.00 charged to credit card '1234123412341234' by merchant '123457890' as test input
 		Dining dining = Dining.createDining("100.00", "1234123412341234", "1234567890");
@@ -40,7 +57,7 @@ public class RewardNetworkTests {
 		AccountContribution contribution = confirmation.getAccountContribution();
 		assertNotNull(contribution);
 
-		// the contribution account number should be '123456789'
+		// the account number should be '123456789'
 		assertEquals("123456789", contribution.getAccountNumber());
 
 		// the total contribution amount should be 8.00 (8% of 100.00)
