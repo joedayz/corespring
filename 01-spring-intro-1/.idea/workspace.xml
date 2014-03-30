@@ -116,8 +116,8 @@
       <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8021739" vertical-offset="606" max-vertical-offset="1125">
-              <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.50869566" vertical-offset="606" max-vertical-offset="1125">
+              <caret line="56" column="64" selection-start-line="56" selection-start-column="64" selection-end-line="56" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -534,12 +534,12 @@
       <created>1396140902300</created>
       <updated>1396140902300</updated>
       <workItem from="1396140904627" duration="159000" />
-      <workItem from="1396141394068" duration="27000" />
+      <workItem from="1396141394068" duration="153000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="186000" />
+    <option name="totallyTimeSpent" value="312000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="43" y="60" width="1207" height="640" extended-state="0" />
@@ -682,8 +682,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8021739" vertical-offset="606" max-vertical-offset="1125">
-          <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.50869566" vertical-offset="606" max-vertical-offset="1125">
+          <caret line="56" column="64" selection-start-line="56" selection-start-column="64" selection-end-line="56" selection-end-column="64" />
           <folding />
         </state>
       </provider>
