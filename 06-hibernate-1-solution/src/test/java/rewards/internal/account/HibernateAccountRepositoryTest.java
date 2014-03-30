@@ -30,7 +30,7 @@ import static org.junit.Assert.*;
  * the Account Hibernate mapping is correct.
  */
 @RunWith(JUnit4.class)
-public class HibernateAccountRepositoryTests {
+public class HibernateAccountRepositoryTest {
 
 	private HibernateAccountRepository repository;
 
@@ -42,8 +42,7 @@ public class HibernateAccountRepositoryTests {
 	public void setUp() throws Exception  {
 		// setup the repository to test
 		SessionFactory sessionFactory = createTestSessionFactory();
-		//TODO : What's missing?
-		repository = null;
+		repository = new HibernateAccountRepository(sessionFactory);
 		// begin a transaction
 		transactionManager = new HibernateTransactionManager(sessionFactory);
 		transactionStatus = transactionManager.getTransaction(new DefaultTransactionDefinition());
