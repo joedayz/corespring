@@ -4,7 +4,12 @@
   <artifactId>01-spring-intro-1-solution</artifactId>
   <name>01-spring-intro-1-solution</name>
   <version>1.0</version>
-  
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
 
     <dependencies>
 	

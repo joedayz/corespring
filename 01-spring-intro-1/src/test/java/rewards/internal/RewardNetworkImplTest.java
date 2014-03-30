@@ -27,7 +27,7 @@ import rewards.RewardNetwork;
  * validate a design as they are a measure for how easy it is to use your code.
  */
 @RunWith(JUnit4.class)
-public class RewardNetworkImplTests {
+public class RewardNetworkImplTest {
 
 	private RewardNetwork rewardNetwork;
 

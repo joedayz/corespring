@@ -20,13 +20,10 @@ import common.money.MonetaryAmount;
  *
  * @author josediaz
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(
-		locations={
-				"classpath:rewards/test-infrastructure-config.xml"})
+//TODO
 public class RewardNetworkTest {
 
-	@Autowired
+
     private RewardNetwork rewardNetwork;
 
 
