@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:rewards/system-test-config.xml"})
-public class RewardNetworkTests  {
+public class RewardNetworkTest {
 
 	/**
 	 * The object being tested.

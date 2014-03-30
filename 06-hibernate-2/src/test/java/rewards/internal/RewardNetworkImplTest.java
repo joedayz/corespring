@@ -23,7 +23,7 @@ import common.money.MonetaryAmount;
  * API in action. Tests also help validate a design as they are a measure for how easy it is to use your code.
  */
 @RunWith(JUnit4.class)
-public class RewardNetworkImplTests extends TestCase {
+public class RewardNetworkImplTest extends TestCase {
 
 	/**
 	 * The object being tested.

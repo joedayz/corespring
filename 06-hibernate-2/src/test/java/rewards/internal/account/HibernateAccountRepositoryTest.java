@@ -13,7 +13,7 @@ import org.junit.runners.JUnit4;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.orm.hibernate3.HibernateTransactionManager;
-import org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean;
+import org.springframework.orm.hibernate3.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
@@ -30,7 +30,7 @@ import static org.junit.Assert.*;
  * the Account Hibernate mapping is correct.
  */
 @RunWith(JUnit4.class)
-public class HibernateAccountRepositoryTests {
+public class HibernateAccountRepositoryTest {
 
 	private HibernateAccountRepository repository;
 
@@ -78,9 +78,14 @@ public class HibernateAccountRepositoryTests {
 
 	private SessionFactory createTestSessionFactory() throws Exception {
 		// create a FactoryBean to help create a Hibernate SessionFactory
-		AnnotationSessionFactoryBean factoryBean = new AnnotationSessionFactoryBean();
+		
+		//TODO 34: AnnotationSessionFactoryBean
+		LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
 		factoryBean.setDataSource(createTestDataSource());
-		factoryBean.setAnnotatedClasses(new Class [] {Account.class, Beneficiary.class});
+		Resource[] mappingLocations = new ClassPathResource[] {
+				new ClassPathResource("Account.hbm.xml", Account.class),
+				new ClassPathResource("Beneficiary.hbm.xml", Beneficiary.class) };
+		factoryBean.setMappingLocations(mappingLocations);
 		factoryBean.setHibernateProperties(createHibernateProperties());
 		// initialize according to the Spring InitializingBean contract
 		factoryBean.afterPropertiesSet();

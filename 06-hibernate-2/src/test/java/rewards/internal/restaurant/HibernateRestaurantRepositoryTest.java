@@ -1,4 +1,6 @@
-package rewards.internal.account;
+package rewards.internal.restaurant;
+
+import static org.junit.Assert.*;
 
 import java.util.Properties;
 
@@ -13,79 +15,62 @@ import org.junit.runners.JUnit4;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.orm.hibernate3.HibernateTransactionManager;
-import org.springframework.orm.hibernate3.LocalSessionFactoryBean;
+import org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import rewards.testdb.TestDataSourceFactory;
 
-import common.money.MonetaryAmount;
 import common.money.Percentage;
 
-import static org.junit.Assert.*;
-
 /**
- * Unit test for the Hibernate-based account repository implementation. Tests application data access behavior to verify
- * the Account Hibernate mapping is correct.
+ * Unit test for the Hibernate-based restaurant repository implementation. Tests application data access behavior to
+ * verify the Restaurant Hibernate mapping is correct.
  */
 @RunWith(JUnit4.class)
-public class HibernateAccountRepositoryTests {
+public class HibernateRestaurantRepositoryTest {
 
-	private HibernateAccountRepository repository;
+	private HibernateRestaurantRepository repository;
 
 	private PlatformTransactionManager transactionManager;
 
 	private TransactionStatus transactionStatus;
 
 	@Before
-	public void setUp() throws Exception  {
+	public void setUp() throws Exception {
 		// setup the repository to test
 		SessionFactory sessionFactory = createTestSessionFactory();
-		repository = new HibernateAccountRepository(sessionFactory);
+		repository = new HibernateRestaurantRepository(sessionFactory);
 		// begin a transaction
 		transactionManager = new HibernateTransactionManager(sessionFactory);
 		transactionStatus = transactionManager.getTransaction(new DefaultTransactionDefinition());
 	}
 
 	@Test
-	public void testFindByCreditCard() {
-		Account account = repository.findByCreditCard("1234123412341234");
-		// assert the returned account contains what you expect given the state of the database
-		// and the Account Hibernate mapping configuration
-		assertNotNull("account should never be null", account);
-		assertEquals("wrong entity id", Long.valueOf(0), account.getEntityId());
-		assertEquals("wrong account number", "123456789", account.getNumber());
-		assertEquals("wrong name", "Keith and Keri Donald", account.getName());
-		assertEquals("wrong beneficiary collection size", 2, account.getBeneficiaries().size());
-
-		Beneficiary b1 = account.getBeneficiary("Annabelle");
-		assertNotNull("Annabelle should be a beneficiary", b1);
-		assertEquals("wrong savings", MonetaryAmount.valueOf("0.00"), b1.getSavings());
-		assertEquals("wrong allocation percentage", Percentage.valueOf("50%"), b1.getAllocationPercentage());
-
-		Beneficiary b2 = account.getBeneficiary("Corgan");
-		assertNotNull("Corgan should be a beneficiary", b2);
-		assertEquals("wrong savings", MonetaryAmount.valueOf("0.00"), b2.getSavings());
-		assertEquals("wrong allocation percentage", Percentage.valueOf("50%"), b2.getAllocationPercentage());
+	public void testFindRestaurantByMerchantNumber() {
+		Restaurant restaurant = repository.findByMerchantNumber("1234567890");
+		assertNotNull("the restaurant should never be null", restaurant);
+		assertEquals("the merchant number is wrong", "1234567890", restaurant.getNumber());
+		assertEquals("the name is wrong", "AppleBees", restaurant.getName());
+		assertEquals("the benefitPercentage is wrong", Percentage.valueOf("8%"), restaurant.getBenefitPercentage());
+		assertEquals("the benefit availability policy is wrong", AlwaysAvailable.INSTANCE, restaurant
+				.getBenefitAvailabilityPolicy());
 	}
 
 	@After
-	public void tearDown() {
+	public void tearDown() throws Exception {
 		// rollback the transaction to avoid corrupting other tests
 		transactionManager.rollback(transactionStatus);
 	}
 
 	private SessionFactory createTestSessionFactory() throws Exception {
 		// create a FactoryBean to help create a Hibernate SessionFactory
-		
-		//TODO 34: AnnotationSessionFactoryBean
-		LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
+		AnnotationSessionFactoryBean factoryBean = new AnnotationSessionFactoryBean();
 		factoryBean.setDataSource(createTestDataSource());
-		Resource[] mappingLocations = new ClassPathResource[] {
-				new ClassPathResource("Account.hbm.xml", Account.class),
-				new ClassPathResource("Beneficiary.hbm.xml", Beneficiary.class) };
-		factoryBean.setMappingLocations(mappingLocations);
+		
+		//TODO 35: Add annotated classes
+
 		factoryBean.setHibernateProperties(createHibernateProperties());
 		// initialize according to the Spring InitializingBean contract
 		factoryBean.afterPropertiesSet();

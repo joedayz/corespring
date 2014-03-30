@@ -29,7 +29,7 @@ import common.money.Percentage;
  * verify the Restaurant Hibernate mapping is correct.
  */
 @RunWith(JUnit4.class)
-public class HibernateRestaurantRepositoryTests {
+public class HibernateRestaurantRepositoryTest {
 
 	private HibernateRestaurantRepository repository;
 

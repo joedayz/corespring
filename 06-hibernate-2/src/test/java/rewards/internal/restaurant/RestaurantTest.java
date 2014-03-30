@@ -11,7 +11,7 @@ import common.money.Percentage;
  * Unit tests for exercising the behavior of the Restaurant aggregate entity. A restaurant calculates a benefit to award
  * to an account for dining based on an availability policy and benefit percentage.
  */
-public class RestaurantTests extends TestCase {
+public class RestaurantTest extends TestCase {
 
 	private Restaurant restaurant;
 
