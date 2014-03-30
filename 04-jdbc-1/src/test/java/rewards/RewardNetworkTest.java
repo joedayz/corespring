@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 @ContextConfiguration(
 		locations={
 				"classpath:rewards/system-test-config.xml"})
-public class RewardNetworkTests  {
+public class RewardNetworkTest {
 
 	/**
 	 * The object being tested.

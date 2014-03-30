@@ -13,11 +13,11 @@
 	<import resource="classpath:rewards/internal/application-config.xml"/>
 	
 	<!-- Creates an in-memory "rewards" database populated with test data for fast testing -->
-	<bean id="dataSource" class="rewards.testdb.TestDataSourceFactory">
-		<property name="testDatabaseName" value="rewards"/>
-		<property name="schemaLocation" value="classpath:rewards/testdb/schema.sql"/>
-		<property name="testDataLocation" value="classpath:rewards/testdb/test-data.sql"/>
-	</bean>
+
+    <jdbc:embedded-database id="dataSource" type="HSQL">
+        <jdbc:script location="classpath:rewards/testdb/schema.sql"/>
+        <jdbc:script location="classpath:rewards/testdb/test-data.sql"/>
+    </jdbc:embedded-database>
 			
 	<!-- Local, JDBC-based TransactionManager -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

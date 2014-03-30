@@ -7,8 +7,10 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 
+import org.springframework.stereotype.Repository;
 import rewards.Dining;
 import rewards.internal.account.Account;
 
@@ -17,10 +19,13 @@ import common.money.Percentage;
 /**
  * Loads restaurants from a data source using the JDBC API.
  */
+
+@Repository
 public class JdbcRestaurantRepository implements RestaurantRepository {
 
 	private DataSource dataSource;
 
+    @Autowired
 	public JdbcRestaurantRepository(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
