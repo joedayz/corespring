@@ -9,7 +9,7 @@ import common.money.Percentage;
 /**
  * Unit tests for the Account class that verify Account behavior works in isolation.
  */
-public class AccountTests extends TestCase {
+public class AccountTest extends TestCase {
 
 	private Account account = new Account("1", "Keith and Keri Donald");
 

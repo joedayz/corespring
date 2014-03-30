@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:rewards/system-test-config.xml" })
 // TODO 4: Update test to extend AbstractTransactionalJUnit4SpringContextTests
-public class RewardNetworkSideEffectTests {
+public class RewardNetworkSideEffectTest {
 
 	/**
 	 * The object being tested.

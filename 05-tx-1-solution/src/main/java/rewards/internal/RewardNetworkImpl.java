@@ -2,6 +2,7 @@ package rewards.internal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import rewards.AccountContribution;
@@ -47,7 +48,7 @@ public class RewardNetworkImpl implements RewardNetwork {
 		this.rewardRepository = rewardRepository;
 	}
 
-	@Transactional//(propagation=Propagation.REQUIRES_NEW)
+	@Transactional//(propagation= Propagation.REQUIRES_NEW)
 	public RewardConfirmation rewardAccountFor(Dining dining) {
 		Account account = accountRepository.findByCreditCard(dining.getCreditCardNumber());
 		Restaurant restaurant = restaurantRepository.findByMerchantNumber(dining.getMerchantNumber());

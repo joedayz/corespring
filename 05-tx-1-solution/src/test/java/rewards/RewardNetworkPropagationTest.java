@@ -19,7 +19,7 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:rewards/system-test-config.xml"})
-public class RewardNetworkPropagationTests {
+public class RewardNetworkPropagationTest {
 
 	/**
 	 * The object being tested.

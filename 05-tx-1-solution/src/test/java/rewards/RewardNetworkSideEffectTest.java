@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
  * run in, so each test must be independent of all others.
  */
 @ContextConfiguration(locations = { "classpath:rewards/system-test-config.xml" })
-public class RewardNetworkSideEffectTests extends
+public class RewardNetworkSideEffectTest extends
 		AbstractTransactionalJUnit4SpringContextTests {
 
 	/**
