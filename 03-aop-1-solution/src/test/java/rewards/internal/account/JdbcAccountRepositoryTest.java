@@ -14,7 +14,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
-import rewards.testdb.TestDataSourceFactory;
+import rewards.internal.testdb.TestDataSourceFactory;
 
 import common.money.MonetaryAmount;
 import common.money.Percentage;
@@ -25,7 +25,7 @@ import static org.junit.Assert.*;
  * behavior works as expected.
  */
 @RunWith(JUnit4.class)
-public class JdbcAccountRepositoryTests {
+public class JdbcAccountRepositoryTest {
 
 	private JdbcAccountRepository repository;
 

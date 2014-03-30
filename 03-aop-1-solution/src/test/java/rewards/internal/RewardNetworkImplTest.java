@@ -23,7 +23,7 @@ import static org.junit.Assert.*;
  * API in action. Tests also help validate a design as they are a measure for how easy it is to use your code.
  */
 @RunWith(JUnit4.class)
-public class RewardNetworkImplTests {
+public class RewardNetworkImplTest {
 
 	/**
 	 * The object being tested.

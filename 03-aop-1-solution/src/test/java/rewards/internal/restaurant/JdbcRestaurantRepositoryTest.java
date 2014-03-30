@@ -10,7 +10,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.dao.EmptyResultDataAccessException;
 
-import rewards.testdb.TestDataSourceFactory;
+import rewards.internal.testdb.TestDataSourceFactory;
 
 import common.money.Percentage;
 import static org.junit.Assert.*;
@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
  * behavior works as expected.
  */
 @RunWith(JUnit4.class)
-public class JdbcRestaurantRepositoryTests {
+public class JdbcRestaurantRepositoryTest {
 
 	private JdbcRestaurantRepository repository;
 

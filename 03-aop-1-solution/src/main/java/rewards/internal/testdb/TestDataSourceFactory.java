@@ -1,4 +1,4 @@
-package rewards.testdb;
+package rewards.internal.testdb;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
