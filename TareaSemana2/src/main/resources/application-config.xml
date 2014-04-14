@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="jdbcAccountDao" class="rewards.internal.account.JdbcAccountDao" />
+
+    <bean id="hibernateAccountDao" class="rewards.internal.account.HibernateAccountDao" scope="prototype"/>
+
+    <bean id="rewardNetwork" class="rewards.internal.RewardNetworkImpl">
+           <constructor-arg ref="jdbcAccountDao"/>
+    </bean>
+
+    <bean id="joedayz" class="rewards.internal.JoeDayzImpl">
+        <constructor-arg ref="jdbcAccountDao"/>
+    </bean>
+
+
+    <bean id="uPromise" class="rewards.internal.UPromiseImpl">
+        <constructor-arg ref="hibernateAccountDao" />
+    </bean>
+
+    <bean id="uPromiseSucursal" class="rewards.internal.UPromiseImpl">
+        <constructor-arg ref="hibernateAccountDao" />
+    </bean>
+
+</beans>
