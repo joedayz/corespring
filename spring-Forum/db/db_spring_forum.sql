@@ -50,7 +50,7 @@ CREATE TABLE `topico` (
 
 INSERT INTO `usuario` (`id`, `email`, `fecha_publicacion`, `hash_password`, `login`, `nombre`, `twitter`, `ultimo_login`)
 VALUES
-  (1, 'jamdiazdiaz@gmail.com', '2013-05-23 20:09:31', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'jamdiazdiaz', 'Jose Diaz', NULL, NULL);
+  (1, 'jamdiazdiaz@gmail.com', '2013-05-23 20:09:31', '6ec74178d214d9cf7826704e42f9312cda56eb5f8e0af98df0e94f92bd466dab', 'jamdiazdiaz', 'Jose Diaz', NULL, NULL);
 
 
 
