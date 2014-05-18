@@ -54,4 +54,12 @@ VALUES
 
 
 
+INSERT INTO `permiso_usuario` (`id`, `role`, `usuario_id`)
+VALUES
+  (1, 'ROLE_ADMIN', 1),
+  (2, 'ROLE_MEMBER', 1);
+
+
+
+
 
