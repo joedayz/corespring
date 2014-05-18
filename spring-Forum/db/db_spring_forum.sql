@@ -48,3 +48,10 @@ CREATE TABLE `topico` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+INSERT INTO `usuario` (`id`, `email`, `fecha_publicacion`, `hash_password`, `login`, `nombre`, `twitter`, `ultimo_login`)
+VALUES
+  (1, 'jamdiazdiaz@gmail.com', '2013-05-23 20:09:31', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'jamdiazdiaz', 'Jose Diaz', NULL, NULL);
+
+
+
+
