@@ -19,7 +19,7 @@ public class NombresBean {
 	private HtmlCommandButton botonAgregar;
 	
 	
-	public void agregar(){
+	public String agregar(){
 		
 		this.nombres.add(nombre);
 		
@@ -27,7 +27,11 @@ public class NombresBean {
 			this.inputNombre.setDisabled(true);
 			this.botonAgregar.setDisabled(true);
 			this.botonAgregar.setValue("Muchos nombres asignados");
+			//return "hola";  //busque la vista
+			return "hola?faces-redirect=true";
 		}
+		
+		return null; //se quede en la misma pagina
 		
 	}
 	
@@ -44,6 +48,27 @@ public class NombresBean {
 	public void setNombres(List<String> nombres) {
 		this.nombres = nombres;
 	}
+
+
+	public HtmlInputText getInputNombre() {
+		return inputNombre;
+	}
+
+
+	public void setInputNombre(HtmlInputText inputNombre) {
+		this.inputNombre = inputNombre;
+	}
+
+
+	public HtmlCommandButton getBotonAgregar() {
+		return botonAgregar;
+	}
+
+
+	public void setBotonAgregar(HtmlCommandButton botonAgregar) {
+		this.botonAgregar = botonAgregar;
+	}
+	
 	
 	
 }
