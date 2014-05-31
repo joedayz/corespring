@@ -10,6 +10,14 @@
 <h:head>
 	<title>Lista de Nombres</title>
 	
+	<style>
+	
+		.campo{
+			background-color: #ccc;
+			color: white
+		}
+	</style>
+	
 	<script>
 	
 		function modificarValorCampo(){
@@ -22,7 +30,13 @@
 
 <h:body>
 	<h:form id="miForm">
-			Nombre: <h:inputText id="miCampo" value="#{nombresBean.nombre}"
+			Nombre: <h:inputText styleClass="campo"  
+						size="40" maxlength="50"
+						onchange="this.value = this.value.toUpperCase();"
+						onmouseover="this.style.backgroundColor = 'yellow';"
+						onmouseout="this.style.backgroundColor = '#ccc';"
+						style="border-color: blue; border-style: dotted"
+						id="miCampo" value="#{nombresBean.nombre}"
 			
 			binding="#{nombresBean.inputNombre}" />
 		<br />
@@ -41,7 +55,13 @@
 			
 			
 		<input type="button" value="Modificar campo" 
-			onclick="modificarValorCampo();"/>		
+			onclick="modificarValorCampo();"/>	
+			
+			
+		
+		
+		
+			
 
 	</h:form>
 
