@@ -5,10 +5,11 @@
 	version="2.2">
 
 <!-- 	<navigation-rule>
-		<from-view-id>/nombres.xhtml</from-view-id>
+		<from-view-id>/admin/*</from-view-id>
 		<navigation-case>
 			<from-outcome>hola</from-outcome>
 			<to-view-id>/hola.xthml</to-view-id>
+			<redirect/>
 		</navigation-case>
 	</navigation-rule>
  -->
