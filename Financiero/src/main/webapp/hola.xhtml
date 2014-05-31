@@ -9,12 +9,13 @@
 	<h:body>
 		
 		<h:form>
-			<h1>Hola</h1>
-			Nombre: <h:inputText/>
+			<h1>Hola #{holaBean.nombreCompleto}</h1>
+			Nombre: <h:inputText value="#{holaBean.nombre}"/>
 			<br/>
-			Apellido: <h:inputText/>
+			Apellido: <h:inputText value="#{holaBean.apellido}"/>
 			<br/>
-			<h:commandButton value="Decir Hola"/>
+			<h:commandButton value="Decir Hola" 
+				action="#{holaBean.decirHola}"/>
 		
 		</h:form>
 	
