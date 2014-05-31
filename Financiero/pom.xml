@@ -40,6 +40,15 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<!-- JSF -->
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.faces</artifactId>
+			<version>2.2.2</version>
+			<scope>compile</scope>
+		</dependency>
+
+
 
 	</dependencies>
 
