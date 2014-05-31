@@ -11,10 +11,13 @@
 	
 	<h:body>
 		<h:form>
-			Nombre: <h:inputText value="#{nombresBean.nombre}"/>
+			Nombre: <h:inputText value="#{nombresBean.nombre}" 
+					binding="#nombresBean.inputNombre"/>
 			<br/>
 			
-			<h:commandButton value="Agregar" action="#{nombresBean.agregar}"/>
+			<h:commandButton value="Agregar" 
+				binding="#{nombresBean.botonAgregar}"
+				action="#{nombresBean.agregar}"/>
 			<br/>
 			<ol>
 				<ui:repeat var="nombre" value="#{nombresBean.nombres}">
