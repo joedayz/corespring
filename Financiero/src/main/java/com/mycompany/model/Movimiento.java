@@ -3,7 +3,21 @@ package com.mycompany.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Movimiento {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name="movimiento")
+class Movimiento {
 
 	private Long id;
 	private Persona persona;
@@ -12,43 +26,54 @@ public class Movimiento {
 	private TipoMovimiento tipo;
 	private Date fechaVencimiento;
 	private Date fechaPago;
-	
+	@Id
+	@GeneratedValue
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
+	@ManyToOne(optional=false)
+	@JoinColumn(name="persona_id")
 	public Persona getPersona() {
 		return persona;
 	}
 	public void setPersona(Persona persona) {
 		this.persona = persona;
 	}
+	@Column(length=80, nullable=false)
 	public String getDescripcion() {
 		return descripcion;
 	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	@Column(precision=10, scale=2, nullable=false)
 	public BigDecimal getValor() {
 		return valor;
 	}
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
+	@Enumerated(EnumType.STRING)
+	@Column(nullable =false)
 	public TipoMovimiento getTipo() {
 		return tipo;
 	}
 	public void setTipo(TipoMovimiento tipo) {
 		this.tipo = tipo;
 	}
+	@Temporal(TemporalType.DATE)
+	@Column(name="fecha_vencimiento", nullable=false)
 	public Date getFechaVencimiento() {
 		return fechaVencimiento;
 	}
 	public void setFechaVencimiento(Date fechaVencimiento) {
 		this.fechaVencimiento = fechaVencimiento;
 	}
+	@Temporal(TemporalType.DATE)
+	@Column(name="fecha_pago", nullable=true)
 	public Date getFechaPago() {
 		return fechaPago;
 	}
