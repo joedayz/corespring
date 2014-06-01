@@ -12,13 +12,38 @@ import javax.faces.component.html.HtmlInputText;
 @ApplicationScoped
 public class NombresBean {
 
-	private String nombre;
+	private String nombre ="jose";
 	private List<String> nombres = new ArrayList<>();
 	
 	private HtmlInputText inputNombre;
 	private HtmlCommandButton botonAgregar;
 	
+	private String recumenCurriculum;
+	private String mensaje;
 	
+	
+	
+	
+	public String getMensaje() {
+		return mensaje;
+	}
+
+
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
+	}
+
+
+	public String getRecumenCurriculum() {
+		return recumenCurriculum;
+	}
+
+
+	public void setRecumenCurriculum(String recumenCurriculum) {
+		this.recumenCurriculum = recumenCurriculum;
+	}
+
+
 	public String agregar(){
 		
 		this.nombres.add(nombre);
