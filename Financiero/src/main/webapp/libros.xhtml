@@ -11,7 +11,21 @@
 </h:head>
 
 <h:body>
+	<h:outputStylesheet library="css" name="estilo.css"/>
+	<h:outputScript library="js" name="script.js" target="head"/>
+
 	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Titulo:"/> 
+			<h:inputText value="#{librosBean.nuevoLibro.titulo}"/>
+			
+			<h:outputLabel value="Autor"/> 
+			<h:inputText value="#{librosBean.nuevoLibro.autor}"/>
+			
+			<h:outputLabel/>
+			<h:commandButton value="Agregar" action="#{librosBean.agregar}"/>		
+		</h:panelGrid>
+	
 		<h:dataTable value="#{librosBean.libros}" var="libro" border="1"
 			cellspacing="0" cellpading="2">
 			<f:facet name="header">
