@@ -15,12 +15,22 @@
 <h:body>
 
 	<h:form>
-		
-		<h:graphicImage value="/imagenes/java-hulk.jpg"></h:graphicImage>
-		
-		
-		
-		<h:outputLabel value="Nombre:" for="inputNombre"/>
+		<h:outputLabel value="Equipo Futbol" for="equipoFutbol"></h:outputLabel>
+		<h:selectOneMenu id="equipoFutbol"
+			value="#{nombresBean.equipoFavorito}">
+			<f:selectItem itemValue="La Palma"></f:selectItem>
+			<f:selectItem itemValue="Ciclista"></f:selectItem>
+			<f:selectItem itemValue="Yurimaguas"></f:selectItem>
+		</h:selectOneMenu>
+
+
+
+		<h:graphicImage library="imagenes" name="java-hulk.jpg" width="200"
+			height="200"></h:graphicImage>
+		<br />
+
+
+		<h:outputLabel value="Nombre:" for="inputNombre" />
 		<h:inputText id="inputNombre" value="#{nombresBean.nombre}" />
 		<br />
 		<h:inputSecret value="#{loginBean.password}" />

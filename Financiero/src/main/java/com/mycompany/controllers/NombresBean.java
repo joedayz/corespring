@@ -21,9 +21,23 @@ public class NombresBean {
 	private String recumenCurriculum;
 	private String mensaje;
 	
+	private String equipoFavorito;
 	
 	
 	
+	
+	
+	
+	public String getEquipoFavorito() {
+		return equipoFavorito;
+	}
+
+
+	public void setEquipoFavorito(String equipoFavorito) {
+		this.equipoFavorito = equipoFavorito;
+	}
+
+
 	public String getMensaje() {
 		return mensaje;
 	}
