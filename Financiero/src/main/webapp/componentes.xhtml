@@ -15,12 +15,24 @@
 <h:body>
 
 	<h:form>
+
+		<h:selectManyMenu value="#{nombresBean.equiposFavoritos}" id="equipos">
+			<f:selectItem itemValue="La Palma" itemLabel="LA PALMA"></f:selectItem>
+			<f:selectItem itemValue="Ciclista" itemLabel="CLUB CICLISTA"></f:selectItem>
+			<f:selectItem itemValue="Yurimaguas" itemLabel="Sport Yuri"></f:selectItem>
+			<f:selectItem itemValue="AL" itemLabel="AL"></f:selectItem>
+			<f:selectItem itemValue="U" itemLabel="U"></f:selectItem>
+			<f:selectItem itemValue="SC" itemLabel="SC"></f:selectItem>
+		</h:selectManyMenu>
+
+		<br />
+
 		<h:outputLabel value="Equipo Futbol" for="equipoFutbol"></h:outputLabel>
 		<h:selectOneMenu id="equipoFutbol"
 			value="#{nombresBean.equipoFavorito}">
-			<f:selectItem itemValue="La Palma"></f:selectItem>
-			<f:selectItem itemValue="Ciclista"></f:selectItem>
-			<f:selectItem itemValue="Yurimaguas"></f:selectItem>
+			<f:selectItem itemValue="La Palma" itemLabel="LA PALMA"></f:selectItem>
+			<f:selectItem itemValue="Ciclista" itemLabel="CLUB CICLISTA"></f:selectItem>
+			<f:selectItem itemValue="Yurimaguas" itemLabel="Sport Yuri"></f:selectItem>
 		</h:selectOneMenu>
 
 
