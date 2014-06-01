@@ -21,8 +21,33 @@ public class NombresBean {
 	private String recumenCurriculum;
 	private String mensaje;
 	
+	private boolean acepto;
+	
+	private Integer[] asuntosInteres;
 	
 	
+	
+	
+	public Integer[] getAsuntosInteres() {
+		return asuntosInteres;
+	}
+
+
+	public void setAsuntosInteres(Integer[] asuntosInteres) {
+		this.asuntosInteres = asuntosInteres;
+	}
+
+
+	public boolean isAcepto() {
+		return acepto;
+	}
+
+
+	public void setAcepto(boolean acepto) {
+		this.acepto = acepto;
+	}
+
+
 	public String[] getEquiposFavoritos() {
 		return equiposFavoritos;
 	}

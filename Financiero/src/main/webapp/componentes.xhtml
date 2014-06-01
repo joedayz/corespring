@@ -15,6 +15,31 @@
 <h:body>
 
 	<h:form>
+	
+		<h:selectManyCheckbox id="asuntos"
+			value="#{nombresBean.asuntosInteres}">
+			<f:selectItem itemValue="1" itemLabel="Java"/>
+			<f:selectItem itemValue="2" itemLabel="NET"/>
+			<f:selectItem itemValue="3" itemLabel="Python"/>
+			<f:selectItem itemValue="4" itemLabel="Ruby"/>
+		</h:selectManyCheckbox>
+
+		<br/>
+
+		<h:selectBooleanCheckbox id="aceptar" value="#{nombres.acepto}">
+
+		</h:selectBooleanCheckbox>
+		<h:outputLabel value="Acepta los terminos y condiciones" for="aceptar"/>	
+		
+		<br />
+
+		<h:selectOneRadio id="sexo">
+			<f:selectItem itemValue="M" itemLabel="Masculino"></f:selectItem>
+			<f:selectItem itemValue="F" itemLabel="Femenino"></f:selectItem>
+		</h:selectOneRadio>
+
+		<br />
+
 
 		<h:selectManyListbox value="#{nombresBean.equiposFavoritos}"
 			id="equipos2">
