@@ -15,7 +15,13 @@
 <h:body>
 
 	<h:form>
-		<h:inputText value="#{nombresBean.nombre}" />
+		
+		<h:graphicImage value="/imagenes/java-hulk.jpg"></h:graphicImage>
+		
+		
+		
+		<h:outputLabel value="Nombre:" for="inputNombre"/>
+		<h:inputText id="inputNombre" value="#{nombresBean.nombre}" />
 		<br />
 		<h:inputSecret value="#{loginBean.password}" />
 		<br />
