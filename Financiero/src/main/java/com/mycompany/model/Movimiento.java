@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -62,6 +63,7 @@ public class Movimiento {
 	}
 
 	@NotNull
+	@DecimalMin("0")
 	@Column(precision = 10, scale = 2, nullable = false)
 	public BigDecimal getValor() {
 		return valor;
