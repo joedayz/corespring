@@ -67,8 +67,7 @@ public class Movimiento implements Serializable{
 		this.descripcion = descripcion;
 	}
 
-	@NotNull
-	@DecimalMin("0")
+	@DecimalPositivo
 	@Column(precision = 10, scale = 2, nullable = false)
 	public BigDecimal getValor() {
 		return valor;
