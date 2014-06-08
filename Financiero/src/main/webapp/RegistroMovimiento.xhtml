@@ -16,6 +16,9 @@
 		<h1>Registro de Movimiento</h1>
 
 		<h:form id="frm">
+		
+			<h:messages showDetail="false" showSummary="true"/>
+		
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Tipo" />
 				<h:selectOneRadio value="#{registroMovimientoBean.movimiento.tipo}"

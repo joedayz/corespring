@@ -13,5 +13,11 @@
 		</navigation-case>
 	</navigation-rule>
  -->
+ 	<application>
+ 		<message-bundle>
+ 			com.mycompany.resources.Messages
+ 		</message-bundle> 	
+ 	</application>
+ 
 
 </faces-config>

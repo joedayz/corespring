@@ -1,5 +1,6 @@
 package com.mycompany.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -21,8 +22,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "movimiento")
-public class Movimiento {
+public class Movimiento implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private Persona persona;
 	private String descripcion;
