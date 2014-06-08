@@ -16,6 +16,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name = "movimiento")
 public class Movimiento {
@@ -49,6 +51,7 @@ public class Movimiento {
 		this.persona = persona;
 	}
 
+	@NotEmpty
 	@Column(length = 80, nullable = false)
 	public String getDescripcion() {
 		return descripcion;
@@ -58,6 +61,7 @@ public class Movimiento {
 		this.descripcion = descripcion;
 	}
 
+	@NotNull
 	@Column(precision = 10, scale = 2, nullable = false)
 	public BigDecimal getValor() {
 		return valor;
@@ -67,6 +71,7 @@ public class Movimiento {
 		this.valor = valor;
 	}
 
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
 	public TipoMovimiento getTipo() {
@@ -77,6 +82,7 @@ public class Movimiento {
 		this.tipo = tipo;
 	}
 
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	@Column(name = "fecha_vencimiento", nullable = false)
 	public Date getFechaVencimiento() {
