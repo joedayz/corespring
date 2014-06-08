@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 @Entity
 @Table(name = "persona")
@@ -22,6 +24,7 @@ public class Persona {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	@NotEmpty
 	@Column(length=60, nullable=false)
 	public String getNombre() {
 		return nombre;
