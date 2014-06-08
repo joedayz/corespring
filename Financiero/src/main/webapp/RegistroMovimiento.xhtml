@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+	<f:metadata>
+		<f:viewAction action="#{registroMovimientoBean.prepararRegistro}"></f:viewAction>
+	</f:metadata>
+
+	<ui:define name="titulo">Registro de Movimiento</ui:define>
+
+	<ui:define name="cuerpo">
+
+		<h1>Registro de Movimiento</h1>
+
+		<h:form id="frm">
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Tipo" />
+				<h:selectOneRadio value="#{registroMovimientoBean.movimiento.tipo}"
+					label="Tipo de Movimiento">
+					<f:selectItems value="#{registroMovimientoBean.tiposMovimientos}"
+						var="tipoMovimiento" itemValue="#{tipoMovimiento}" />
+				</h:selectOneRadio>
+				<h:outputLabel value="Persona" />
+				<h:selectOneMenu value="#{registroMovimientoBean.movimiento.persona}"
+					label="Persona">
+					<f:selectItem itemLabel="Seleccione" noSelectionOption="true" />
+					<f:selectItems value="#{registroMovimientoBean.todasPersonas}"
+						var="persona" itemValue="#{persona}" itemLabel="#{persona.nombre}" />
+				</h:selectOneMenu>
+				<h:outputLabel value="Descripcion" />
+				<h:inputText size="12"
+					value="#{registroMovimientoBean.movimiento.descripcion}"
+					label="Descripcion" />
+				<h:outputLabel value="Valor" />
+				<h:inputText size="12"
+					value="#{registroMovimientoBean.movimiento.valor}" label="Valor">
+					<f:convertNumber locale="pe_PE" maxFractionDigits="2"
+						minFractionDigits="2" />
+				</h:inputText>
+
+				<h:outputLabel value="Fecha de Vencimiento" />
+				<h:inputText size="12"
+					value="#{registroMovimientoBean.movimiento.fechaVencimiento}"
+					label="Fecha de Vencimiento">
+					<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Lima" />
+				</h:inputText>
+
+				<h:outputLabel value="Fecha de Pago" />
+				<h:inputText size="12"
+					value="#{registroMovimientoBean.movimiento.fechaPago}"
+					label="Fecha de Pago">
+					<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Lima" />
+				</h:inputText>
+
+				<h:outputLabel />
+				<h:commandButton value="Guardar" 
+					action="#{registroMovimientoBean.guardar}"/>
+				
+
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

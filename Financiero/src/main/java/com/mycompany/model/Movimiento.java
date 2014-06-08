@@ -14,10 +14,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "movimiento")
-class Movimiento {
+public class Movimiento {
 
 	private Long id;
 	private Persona persona;
@@ -37,6 +38,7 @@ class Movimiento {
 		this.id = id;
 	}
 
+	@NotNull
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "persona_id")
 	public Persona getPersona() {
@@ -82,6 +84,7 @@ class Movimiento {
 	}
 
 	public void setFechaVencimiento(Date fechaVencimiento) {
+		this.fechaVencimiento = fechaVencimiento;
 	}
 
 	@Temporal(TemporalType.DATE)
