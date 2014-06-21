@@ -44,7 +44,7 @@ public class TransactionInterceptor
 			if(trx!=null && creado){
 				trx.rollback();
 			}
-			throw e;
+			throw ex;
 		} finally{
 			if(trx!=null && trx.isActive() && creado){
 				trx.commit();
