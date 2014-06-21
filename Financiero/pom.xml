@@ -56,6 +56,14 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<!-- Weld (implementación de CDI) -->
+		<dependency>
+			<groupId>org.jboss.weld.servlet</groupId>
+			<artifactId>weld-servlet</artifactId>
+			<version>2.0.4.Final</version>
+			<scope>compile</scope>
+		</dependency>
+
 
 	</dependencies>
 

@@ -2,27 +2,28 @@ package com.mycompany.controllers;
 
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 
 import com.mycompany.model.Movimiento;
 import com.mycompany.repository.MovimientoRepository;
 import com.mycompany.util.JpaUtil;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class ConsultaMovimientosBean {
 
+	@Inject 
+	private MovimientoRepository movimientoRepository;
+	
 	private List<Movimiento> movimientos;
 	
 	public void consultar() {
-		EntityManager manager = JpaUtil.getEntityManager();
-		MovimientoRepository repository =
-				new MovimientoRepository(manager);
-		this.movimientos = repository.todos();
-		manager.close();
+
+		this.movimientos = movimientoRepository.todos();
+	
 	}
 
 	public List<Movimiento> getMovimientos() {
