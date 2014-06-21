@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.inject.Inject;
 
+import com.mycompany.interceptor.Transactional;
 import com.mycompany.model.Movimiento;
 import com.mycompany.repository.MovimientoRepository;
 
@@ -12,7 +13,7 @@ public class RegistroMovimientos {
 	@Inject
 	private MovimientoRepository repository;
 	
-	
+	@Transactional
 	public void guardar(Movimiento movimiento) 
 			throws FinancieroException{
 		if(movimiento.getFechaPago()!=null &&

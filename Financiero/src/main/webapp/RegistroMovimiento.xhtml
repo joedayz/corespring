@@ -3,7 +3,9 @@
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	>
 
 	<f:metadata>
 		<f:viewAction action="#{registroMovimientoBean.prepararRegistro}"></f:viewAction>
@@ -26,17 +28,17 @@
 					<f:selectItems value="#{registroMovimientoBean.tiposMovimientos}"
 						var="tipoMovimiento" itemValue="#{tipoMovimiento}" />
 				</h:selectOneRadio>
-				<h:outputLabel value="Persona" />
-				<h:selectOneMenu value="#{registroMovimientoBean.movimiento.persona}"
-					label="Persona">
+				<p:outputLabel value="Persona" for="persona" />
+				<p:selectOneMenu value="#{registroMovimientoBean.movimiento.persona}"
+					id="persona" filter="true" filterMatchMode="contains">
 					<f:selectItem itemLabel="Seleccione" noSelectionOption="true" />
 					<f:selectItems value="#{registroMovimientoBean.todasPersonas}"
 						var="persona" itemValue="#{persona}" itemLabel="#{persona.nombre}" />
-				</h:selectOneMenu>
-				<h:outputLabel value="Descripcion" />
-				<h:inputText size="12"
+				</p:selectOneMenu>
+				<p:outputLabel value="Descripcion" for="descripcion" />
+				<p:inputText size="60"
 					value="#{registroMovimientoBean.movimiento.descripcion}"
-					label="Descripcion" />
+					id="descripcion" />
 				<h:outputLabel value="Valor" />
 				<h:inputText size="12"
 					value="#{registroMovimientoBean.movimiento.valor}" label="Valor">
