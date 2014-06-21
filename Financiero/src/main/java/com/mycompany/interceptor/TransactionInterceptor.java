@@ -30,7 +30,8 @@ public class TransactionInterceptor
 		try{
 			if(!trx.isActive()){
 				//truco para hacer rollback
-				//a operaciones que no se han hecho commit
+				//a lo que ya haya sucedido
+				//y haya operaciones sin transaccion
 				trx.begin();
 				trx.rollback();
 
