@@ -48,6 +48,7 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<!-- Hibernate Validator -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>

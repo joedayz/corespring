@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -31,6 +32,7 @@ public class Persona implements Serializable {
 		this.id = id;
 	}
 	@NotEmpty
+	@Size(max=60)
 	@Column(length=60, nullable=false)
 	public String getNombre() {
 		return nombre;
