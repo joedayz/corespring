@@ -37,7 +37,7 @@ public class MovimientoRepository {
 		TypedQuery<String> query = manager.createQuery(
 				"select distinct descripcion from "
 				+ "Movimiento where upper(descripcion) "
-				+ "like upper:(descripcion) ", String.class);
+				+ "like upper(:descripcion) ", String.class);
 		query.setParameter("descripcion", 
 				"%" + descripcion + "%");
 		return query.getResultList();
