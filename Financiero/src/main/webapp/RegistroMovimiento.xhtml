@@ -22,12 +22,13 @@
 			<h:messages showDetail="false" showSummary="true"/>
 		
 			<h:panelGrid columns="2">
-				<h:outputLabel value="Tipo" />
-				<h:selectOneRadio value="#{registroMovimientoBean.movimiento.tipo}"
-					label="Tipo de Movimiento">
+				<p:outputLabel value="Tipo" for="tipo"/>
+				<p:selectOneButton id="tipo" value="#{registroMovimientoBean.movimiento.tipo}"
+					>
 					<f:selectItems value="#{registroMovimientoBean.tiposMovimientos}"
-						var="tipoMovimiento" itemValue="#{tipoMovimiento}" />
-				</h:selectOneRadio>
+						var="tipoMovimiento" itemValue="#{tipoMovimiento}" 
+						itemLabel="#{tipoMovimiento.descripcion}"/>
+				</p:selectOneButton>
 				<p:outputLabel value="Persona" for="persona" />
 				<p:selectOneMenu value="#{registroMovimientoBean.movimiento.persona}"
 					id="persona" filter="true" filterMatchMode="contains">
@@ -46,19 +47,23 @@
 						minFractionDigits="2" />
 				</h:inputText>
 
-				<h:outputLabel value="Fecha de Vencimiento" />
-				<h:inputText size="12"
+				<p:outputLabel value="Fecha de Vencimiento" for="fechaVencimiento"/>
+				<p:calendar id="fechaVencimiento" size="12" pattern="dd/MM/yyyy"
 					value="#{registroMovimientoBean.movimiento.fechaVencimiento}"
-					label="Fecha de Vencimiento">
-					<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Lima" />
+					>
+					<p:ajax event="dateSelect" update="@this Pago" 
+					process="@this fechaPago" 
+					listener=#{registroMovimientoBean.fechaVencimientoModificada}"/>
+					
+					<p:ajax event="change"  update="@this fechaPago" 
+					process="@this fechaPago" 
+					listener="#{registroMovimientoBean.fechaVencimientoModificada}"/>
 				</h:inputText>
 
-				<h:outputLabel value="Fecha de Pago" />
-				<h:inputText size="12"
+				<p:outputLabel value="Fecha de Pago" for="fechaPago" />
+				<p:calendar size="12" id="fechaPago" pattern="dd/MM/yyyy"
 					value="#{registroMovimientoBean.movimiento.fechaPago}"
-					label="Fecha de Pago">
-					<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Lima" />
-				</h:inputText>
+					label="Fecha de Pago"/>
 
 				<h:outputLabel />
 				<h:commandButton value="Guardar" 
