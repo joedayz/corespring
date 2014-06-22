@@ -53,12 +53,12 @@
 					>
 					<p:ajax event="dateSelect" update="@this fechaPago" 
 					process="@this fechaPago" 
-					listener=#{registroMovimientoBean.fechaVencimientoModificada}"/>
+					listener="#{registroMovimientoBean.fechaVencimientoModificada}"/>
 					
 					<p:ajax event="change"  update="@this fechaPago" 
 					process="@this fechaPago" 
 					listener="#{registroMovimientoBean.fechaVencimientoModificada}"/>
-				</h:inputText>
+				</p:calendar>
 
 				<p:outputLabel value="Fecha de Pago" for="fechaPago" />
 				<p:calendar size="12" id="fechaPago" pattern="dd/MM/yyyy"
