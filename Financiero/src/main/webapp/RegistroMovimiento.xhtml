@@ -51,7 +51,7 @@
 				<p:calendar id="fechaVencimiento" size="12" pattern="dd/MM/yyyy"
 					value="#{registroMovimientoBean.movimiento.fechaVencimiento}"
 					>
-					<p:ajax event="dateSelect" update="@this Pago" 
+					<p:ajax event="dateSelect" update="@this fechaPago" 
 					process="@this fechaPago" 
 					listener=#{registroMovimientoBean.fechaVencimientoModificada}"/>
 					
