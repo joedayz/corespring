@@ -18,7 +18,8 @@
 
 		<h:form id="form">
 			<p:dataTable value="#{consultaMovimientosBean.movimientos}"
-				var="movimiento" border="1" cellspacing="0" cellpading="0">
+				var="movimiento" border="1" cellspacing="0" cellpading="0" 
+				paginator="true" rows="5" paginatorPosition="bottom">
 				<p:column headerText="Persona">				
 					<h:outputText value="#{movimiento.persona.nombre}" />
 				</p:column>
