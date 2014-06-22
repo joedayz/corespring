@@ -52,7 +52,7 @@
 				<p:outputLabel value="Fecha de Vencimiento" for="fechaVencimiento"/>
 				<p:calendar id="fechaVencimiento" size="12" pattern="dd/MM/yyyy"
 					value="#{registroMovimientoBean.movimiento.fechaVencimiento}"
-					>
+					locale="es_ES">
 					<p:ajax event="dateSelect" update="@this fechaPago" 
 					process="@this fechaPago" 
 					listener="#{registroMovimientoBean.fechaVencimientoModificada}"/>
