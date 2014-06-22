@@ -37,9 +37,10 @@
 						var="persona" itemValue="#{persona}" itemLabel="#{persona.nombre}" />
 				</p:selectOneMenu>
 				<p:outputLabel value="Descripcion" for="descripcion" />
-				<p:inputText size="60"
+				<p:autoComplete id="descripcion" size="60"
 					value="#{registroMovimientoBean.movimiento.descripcion}"
-					id="descripcion" />
+					completeMethod="#{registroMovimientoBean.obtenerDescripciones}"
+					/>
 				<h:outputLabel value="Valor" />
 				<h:inputText size="12"
 					value="#{registroMovimientoBean.movimiento.valor}" label="Valor">

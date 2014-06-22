@@ -13,6 +13,7 @@ import javax.inject.Named;
 import com.mycompany.model.Movimiento;
 import com.mycompany.model.Persona;
 import com.mycompany.model.TipoMovimiento;
+import com.mycompany.repository.MovimientoRepository;
 import com.mycompany.repository.PersonaRepository;
 import com.mycompany.service.FinancieroException;
 import com.mycompany.service.RegistroMovimientos;
@@ -35,6 +36,16 @@ public class RegistroMovimientoBean implements Serializable {
 	private Movimiento movimiento = new Movimiento();
 	private List<Persona> todasPersonas;
 
+	@Inject
+	private MovimientoRepository movimientoRepository;
+	
+	public List<String> obtenerDescripciones(
+			String descripcion){
+		return this.movimientoRepository.
+				descripcionQueCuenten(descripcion);
+	}
+	
+	
 	public void prepararRegistro() {
 		this.todasPersonas = personaRepository.todas();
 	}
