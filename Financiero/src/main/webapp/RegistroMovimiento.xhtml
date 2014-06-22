@@ -22,7 +22,7 @@
 			<p:messages showDetail="false" showSummary="true" 
 				autoUpdate="true"/>
 		
-			<h:panelGrid columns="2">
+			<p:panelGrid columns="2">
 				<p:outputLabel value="Tipo" for="tipo"/>
 				<p:selectOneButton id="tipo" value="#{registroMovimientoBean.movimiento.tipo}"
 					>
@@ -68,11 +68,12 @@
 					label="Fecha de Pago"/>
 
 				<h:outputLabel />
-				<h:commandButton value="Guardar" 
-					action="#{registroMovimientoBean.guardar}"/>
+				<p:commandButton value="Guardar" 
+					action="#{registroMovimientoBean.guardar}" 
+					icon="ui-icon-disk" update="@form"/>
 				
 
-			</h:panelGrid>
+			</p:panelGrid>
 		</h:form>
 
 	</ui:define>
