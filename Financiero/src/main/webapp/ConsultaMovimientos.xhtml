@@ -17,6 +17,10 @@
 		<h1>Consulta de Movimientos</h1>
 
 		<h:form id="form">
+		
+			<p:messages showDetail="false" showSummary="true" 
+			autoUpdate="true"/>
+		
 			<p:dataTable value="#{consultaMovimientosBean.movimientos}"
 				var="movimiento" border="1" cellspacing="0" cellpading="0" 
 				paginator="true" rows="5" paginatorPosition="bottom">
@@ -63,6 +67,13 @@
 						outcome="/RegistroMovimiento">
 						<f:param name="id" value="#{movimiento.id}"></f:param>
 					</p:button>	
+					
+					<p:commandButton icon="ui-icon-trash" title="Eliminar" 
+						process="@this" update="@form" 
+						action="#{consultaMovimientosBean.eliminar}">
+						<f:setPropertyActionListener target="#{movimiento}"
+							 value="#{consultaMovimientosBean.movimientoSeleccionado}"/>
+					</p:commandButton>
 				
 				</p:column>
 

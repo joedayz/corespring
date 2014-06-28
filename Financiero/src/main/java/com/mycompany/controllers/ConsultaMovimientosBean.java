@@ -11,13 +11,16 @@ import javax.inject.Named;
 import com.mycompany.model.Movimiento;
 import com.mycompany.repository.MovimientoRepository;
 import com.mycompany.service.FinancieroException;
+import com.mycompany.service.RegistroMovimientos;
 
 @Named
 @ViewScoped
 public class ConsultaMovimientosBean {
 
-	@Inject 
+	@Inject
 	private MovimientoRepository movimientoRepository;
+	@Inject 
+	private RegistroMovimientos registroMovimientos;
 	
 	private List<Movimiento> movimientos;
 	
@@ -27,7 +30,7 @@ public class ConsultaMovimientosBean {
 		FacesContext context =
 				FacesContext.getCurrentInstance();
 		try{
-			this.movimientoRepository.eliminar(
+			this.registroMovimientos.eliminar(
 					this.movimientoSeleccionado);
 			this.consultar();
 			context.addMessage(null,
@@ -51,6 +54,16 @@ public class ConsultaMovimientosBean {
 
 	public List<Movimiento> getMovimientos() {
 		return movimientos;
+	}
+
+
+	public Movimiento getMovimientoSeleccionado() {
+		return movimientoSeleccionado;
+	}
+
+
+	public void setMovimientoSeleccionado(Movimiento movimientoSeleccionado) {
+		this.movimientoSeleccionado = movimientoSeleccionado;
 	}
 	
 	
