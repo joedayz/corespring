@@ -24,4 +24,18 @@ public class RegistroMovimientos {
 		}
 		this.repository.agregar(movimiento);
 	}
+	
+	@Transactional
+	public void eliminar(Movimiento movimiento) 
+			throws FinancieroException {
+		movimiento = this.repository.
+				porId(movimiento.getId());
+		if(movimiento.getFechaPago()!=null){
+			throw new FinancieroException(
+			"No es posible eliminar un movimiento pagado!");
+		}
+		this.repository.eliminar(movimiento);
+	}
+	
+	
 }

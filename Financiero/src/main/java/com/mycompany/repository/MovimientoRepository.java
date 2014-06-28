@@ -51,6 +51,8 @@ public class MovimientoRepository {
 		return this.manager.merge(movimiento);
 	}
 	
-	
+	public void eliminar(Movimiento movimiento){
+		this.manager.remove(movimiento);
+	}
 	
 }
