@@ -43,7 +43,13 @@ public class MovimientoRepository {
 		return query.getResultList();
 	}
 	
+	public Movimiento porId(Long id){
+		return manager.find(Movimiento.class, id);
+	}
 	
+	public Movimiento guardar(Movimiento movimiento) {
+		return this.manager.merge(movimiento);
+	}
 	
 	
 	
