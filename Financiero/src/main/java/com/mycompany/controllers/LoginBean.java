@@ -1,18 +1,24 @@
 package com.mycompany.controllers;
 
+import java.io.Serializable;
 import java.util.Date;
 
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import com.mycompany.model.Usuario;
 
-@ManagedBean
+@Named
 @RequestScoped
-public class LoginBean {
+public class LoginBean implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Inject
 	private Usuario usuario;
@@ -28,6 +34,9 @@ public class LoginBean {
 		 && "123".equals(this.password)){
 			 this.usuario.setNombre(this.nombreUsuario);
 			 this.usuario.setFechaLogin(new Date());
+			 
+			 return "/ConsultaMovimientos?faces-redirect=true";
+			 
 		 }else{
 			 FacesMessage mensaje = new FacesMessage(
 					 "Usuario/Password invalidos!");
