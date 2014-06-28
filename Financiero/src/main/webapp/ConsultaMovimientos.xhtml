@@ -71,8 +71,8 @@
 					<p:commandButton icon="ui-icon-trash" title="Eliminar" 
 						process="@this" update="@form" 
 						action="#{consultaMovimientosBean.eliminar}">
-						<f:setPropertyActionListener target="#{movimiento}"
-							 value="#{consultaMovimientosBean.movimientoSeleccionado}"/>
+						<f:setPropertyActionListener value="#{movimiento}"
+							 target="#{consultaMovimientosBean.movimientoSeleccionado}"/>
 					</p:commandButton>
 				
 				</p:column>
