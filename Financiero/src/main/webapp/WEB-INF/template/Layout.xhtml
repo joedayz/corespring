@@ -12,6 +12,15 @@
 	<h:outputStylesheet library="css" name="estilo.css" />
 </h:head>
 
+<p:ajaxStatus styleClass="ajax-status">
+	<f:facet name="start">
+		<h:graphicImage library="imagenes" name="loading.gif" />
+	</f:facet>
+	<f:facet name="complete">
+		<h:outputText value="" />
+	</f:facet>
+</p:ajaxStatus>
+
 <h:body>
 
 	<header>
