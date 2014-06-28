@@ -4,10 +4,11 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui"
-	>
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:o="http://omnifaces.org/ui">
 
 	<f:metadata>
+		<o:viewParam name="id" value="#{registroMovimientoBean.movimiento}" />
 		<f:viewAction action="#{registroMovimientoBean.prepararRegistro}"></f:viewAction>
 	</f:metadata>
 
@@ -18,21 +19,21 @@
 		<h1>Registro de Movimiento</h1>
 
 		<h:form id="frm">
-		
-			<p:messages showDetail="false" showSummary="true" 
-				autoUpdate="true"/>
-		
+
+			<p:messages showDetail="false" showSummary="true" autoUpdate="true" />
+
 			<p:panelGrid columns="2">
-				<p:outputLabel value="Tipo" for="tipo"/>
-				<p:selectOneButton id="tipo" value="#{registroMovimientoBean.movimiento.tipo}"
-					>
+				<p:outputLabel value="Tipo" for="tipo" />
+				<p:selectOneButton id="tipo"
+					value="#{registroMovimientoBean.movimiento.tipo}">
 					<f:selectItems value="#{registroMovimientoBean.tiposMovimientos}"
-						var="tipoMovimiento" itemValue="#{tipoMovimiento}" 
-						itemLabel="#{tipoMovimiento.descripcion}"/>
+						var="tipoMovimiento" itemValue="#{tipoMovimiento}"
+						itemLabel="#{tipoMovimiento.descripcion}" />
 				</p:selectOneButton>
 				<p:outputLabel value="Persona" for="persona" />
-				<p:selectOneMenu value="#{registroMovimientoBean.movimiento.persona}"
-					id="persona" filter="true" filterMatchMode="contains">
+				<p:selectOneMenu
+					value="#{registroMovimientoBean.movimiento.persona}" id="persona"
+					filter="true" filterMatchMode="contains">
 					<f:selectItem itemLabel="Seleccione" noSelectionOption="true" />
 					<f:selectItems value="#{registroMovimientoBean.todasPersonas}"
 						var="persona" itemValue="#{persona}" itemLabel="#{persona.nombre}" />
@@ -40,8 +41,7 @@
 				<p:outputLabel value="Descripcion" for="descripcion" />
 				<p:autoComplete id="descripcion" size="60"
 					value="#{registroMovimientoBean.movimiento.descripcion}"
-					completeMethod="#{registroMovimientoBean.obtenerDescripciones}"
-					/>
+					completeMethod="#{registroMovimientoBean.obtenerDescripciones}" />
 				<h:outputLabel value="Valor" />
 				<h:inputText size="12"
 					value="#{registroMovimientoBean.movimiento.valor}" label="Valor">
@@ -49,29 +49,29 @@
 						minFractionDigits="2" />
 				</h:inputText>
 
-				<p:outputLabel value="Fecha de Vencimiento" for="fechaVencimiento"/>
+				<p:outputLabel value="Fecha de Vencimiento" for="fechaVencimiento" />
 				<p:calendar id="fechaVencimiento" size="12" pattern="dd/MM/yyyy"
 					value="#{registroMovimientoBean.movimiento.fechaVencimiento}"
 					locale="es_ES">
-					<p:ajax event="dateSelect" update="@this fechaPago" 
-					process="@this fechaPago" 
-					listener="#{registroMovimientoBean.fechaVencimientoModificada}"/>
-					
-					<p:ajax event="change"  update="@this fechaPago" 
-					process="@this fechaPago" 
-					listener="#{registroMovimientoBean.fechaVencimientoModificada}"/>
+					<p:ajax event="dateSelect" update="@this fechaPago"
+						process="@this fechaPago"
+						listener="#{registroMovimientoBean.fechaVencimientoModificada}" />
+
+					<p:ajax event="change" update="@this fechaPago"
+						process="@this fechaPago"
+						listener="#{registroMovimientoBean.fechaVencimientoModificada}" />
 				</p:calendar>
 
 				<p:outputLabel value="Fecha de Pago" for="fechaPago" />
 				<p:calendar size="12" id="fechaPago" pattern="dd/MM/yyyy"
 					value="#{registroMovimientoBean.movimiento.fechaPago}"
-					label="Fecha de Pago"/>
+					label="Fecha de Pago" />
 
 				<h:outputLabel />
-				<p:commandButton value="Guardar" 
-					action="#{registroMovimientoBean.guardar}" 
-					icon="ui-icon-disk" update="@form"/>
-				
+				<p:commandButton value="Guardar"
+					action="#{registroMovimientoBean.guardar}" icon="ui-icon-disk"
+					update="@form" />
+
 
 			</p:panelGrid>
 		</h:form>

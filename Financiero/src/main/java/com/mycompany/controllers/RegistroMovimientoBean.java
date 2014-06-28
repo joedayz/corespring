@@ -48,6 +48,10 @@ public class RegistroMovimientoBean implements Serializable {
 	
 	public void prepararRegistro() {
 		this.todasPersonas = personaRepository.todas();
+		
+		if(this.movimiento == null){
+			this.movimiento = new Movimiento();
+		}
 	}
 
 	public void guardar() {
