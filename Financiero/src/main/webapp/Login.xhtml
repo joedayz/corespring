@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>Login</title>
+	<h:outputStylesheet library="css" name="estilo.css"/>
+</h:head>
+
+<h:body>
+
+	<div id="login-dialog">
+		<h1>Login</h1>
+		<h:form id="frm">
+			<p:messages autoUpdate="true"/>
+			
+			<h:panelGrid columns="2" styleClass="grid-login">
+				<p:outputLabel value="Usuario" for="usuario"/>
+				<p:inputText id="usuario" size="20" 
+				value="#{loginBean.nombreUsuario}"/>
+				
+				<p:outputLabel value="Password" for="password"/>
+				<p:inputText id="password" size="20" 
+				value="#{loginBean.password}"/>				
+				
+				<p:outputLabel/>
+				<p:commandButton value="Ingresar" 
+					action="#{loginBean.login}"/>
+				
+			</h:panelGrid>
+			
+		</h:form>
+	</div>
+
+</h:body>
+	
+	
+</html>
