@@ -1,4 +1,6 @@
-package gob.sbs.caballeros;
+package caballero;
+
+import caballero.Caballero;
 
 public class Trovador {
 
