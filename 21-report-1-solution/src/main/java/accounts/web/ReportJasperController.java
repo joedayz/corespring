@@ -57,12 +57,12 @@ public class ReportJasperController {
 		List<Map<String, Object>> accounts = reportManager.getAllAccounts();
 		JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(accounts);
 		
-		InputStream reportStream = request.getSession().getServletContext().getResourceAsStream("/report/AccountsReport.jasper");
+		InputStream reportStream = request.getSession().getServletContext().getResourceAsStream("/report/AccountReport.jasper");
 		OutputStream outStream = response.getOutputStream();
 		if(reportType.equalsIgnoreCase("pdf")){
 			
 			byte[] byteStream = JasperRunManager.runReportToPdf(reportStream, parameters, ds);
-			response.setHeader("Content-Disposition","inline, filename=Accounts.pdf");
+			response.setHeader("Content-Disposition","attachment; filename=Accounts.pdf");
 			response.setContentType("application/pdf");
 			response.setContentLength(byteStream.length);
 			outStream.write(byteStream, 0, byteStream.length);
