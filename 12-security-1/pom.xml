@@ -12,7 +12,7 @@
 		<org.slf4j.version>1.5.10</org.slf4j.version>
 		<webflow.version>2.0.8.RELEASE</webflow.version>
 		<jsf.version>1.2.0.09</jsf.version>
-		<spring.security.version>3.0.0.RELEASE</spring.security.version>
+		<spring.security.version>5.2.10.RELEASE</spring.security.version>
 	</properties>
 
 	<dependencies>
