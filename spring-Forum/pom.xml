@@ -151,7 +151,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>4.1.7.Final</version>
+			<version>5.4.24.Final</version>
 		</dependency>
 
 		<!-- driver para mysql -->
