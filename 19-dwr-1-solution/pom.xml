@@ -13,7 +13,7 @@
 		<dwr.version>2.0.3</dwr.version>
 		<commons.dbcp.version>1.2.1</commons.dbcp.version>
 		<hibernate-annotations.version>3.4.0.GA</hibernate-annotations.version>
-		<hibernate-core.version>3.3.2.GA</hibernate-core.version>
+		<hibernate-core.version>5.3.20.Final</hibernate-core.version>
 		<javax.persistence.version>1.0</javax.persistence.version>
 		<mysql.version>5.1.6</mysql.version>
 	</properties>
