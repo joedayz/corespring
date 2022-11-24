@@ -9,7 +9,7 @@
         <org.springframework.version>3.0.5.RELEASE</org.springframework.version>
         <javax.persistence.version>1.0</javax.persistence.version>
         <hibernate-annotations.version>3.4.0.GA</hibernate-annotations.version>
-        <hibernate-core.version>3.3.2.GA</hibernate-core.version>
+        <hibernate-core.version>5.3.20.Final</hibernate-core.version>
         <junit.version>4.7</junit.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
